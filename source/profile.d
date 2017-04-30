@@ -1,6 +1,5 @@
 module profile;
 
-import std.experimental.logger;
 import core.demangle : demangle;
 import std.stdio : File;
 import std.string : indexOfAny, indexOfNeither;
@@ -57,6 +56,17 @@ struct Function {
 			s("\tFinished in: %d ticks (just this function)\n".format(this.FunctionTime));
 			s("\tFinished in: %d ticks (this function and all descendants)\n"
 				.format(this.Time));
+		}
+	}
+
+	const void toJSON(scope void delegate(const(char)[]) s, ulong tps = 0) {
+		import std.format;
+		s('{');
+		s('"name":"%s","mangled":"%s",'.format(this.Me.Name, this.Me.Mangled));
+		if(this.CalledBy) {
+			s('"calledBy":{');
+			foreach(k, v; this.CalledBy)
+				s('[')
 		}
 	}
 }
@@ -119,5 +129,13 @@ struct Profile {
 		foreach(ref f; this.functions) {
 			f.toString(s, this.TicksPerSecond);
 		}
+	}
+
+	JSONValue toJSON() {
+		JSONValue ret;
+		foreach(ref f; this.functions) {
+			ret ~= f.toJSON;
+		}
+		return ret;
 	}
 }
