@@ -41,12 +41,12 @@ struct Function {
 		if(this.CallsTo) {
 			s("\tCalls:\n");
 			foreach(k, v; this.CallsTo)
-				s("\t\t%s\n".format(v.Name));
+				s("\t\t%s\t%d times\n".format(v.Name, v.Calls));
 		}
 		if(this.CalledBy) {
 			s("\tCalled by:\n");
 			foreach(k, v; this.CalledBy)
-				s("\t\t%s\n".format(v.Name));
+				s("\t\t%s\t%d times\n".format(v.Name, v.Calls));
 		}
 		if(tps) {
 			s("\tFinished in: %f seconds (just this function)\n"
