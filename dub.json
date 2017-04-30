@@ -1,0 +1,9 @@
+{
+	"name": "profdump",
+	"authors": [
+		"Anton Fediushin"
+	],
+	"description": "Processes profiling output",
+	"copyright": "Copyright © 2017, Anton Fediusin",
+	"license": "MIT"
+}
