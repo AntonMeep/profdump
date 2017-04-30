@@ -1,0 +1,128 @@
+module profile;
+
+import core.demangle : demangle;
+import std.stdio : File;
+import std.string : indexOfAny, indexOfNeither;
+import std.conv : to;
+import std.regex : regex, matchFirst;
+
+alias HASH = ubyte[4];
+
+struct FunctionElement {
+	char[] Name;
+	char[] Mangled;
+	ulong Calls;
+}
+
+struct Function {
+	FunctionElement Me;
+	FunctionElement[HASH] CallsTo;
+	FunctionElement[HASH] CalledBy;
+	ulong Time;
+	ulong FunctionTime;
+
+	this(char[] name, char[] mangled, ulong calls = 0, ulong time = 0, ulong ftime = 0) {
+		this.Me.Name = name;
+		this.Me.Mangled = mangled;
+		this.Me.Calls = calls;
+		this.Time = time;
+		this.FunctionTime = ftime;
+	}
+
+	void callsTo(FunctionElement func) {
+		import std.digest.crc : crc32Of;
+		HASH h = func.Mangled.crc32Of;
+		this.CallsTo[h] = func;
+	}
+
+	void calledBy(FunctionElement func) {
+		import std.digest.crc : crc32Of;
+		HASH h = func.Mangled.crc32Of;
+		this.CalledBy[h] = func;
+	}
+
+	const void toString(scope void delegate(const(char)[]) s, ulong tps = 0) {
+		import std.format : format;
+		s("Function '%s':\n".format(this.Me.Name));
+		s("\tMangled name: '%s'\n".format(this.Me.Mangled));
+		if(this.CallsTo) {
+			s("\tCalls:\n");
+			foreach(k, v; this.CallsTo)
+				s("\t\t%s\n".format(v.Name));
+		}
+		if(this.CalledBy) {
+			s("\tCalled by:\n");
+			foreach(k, v; this.CalledBy)
+				s("\t\t%s\n".format(v.Name));
+		}
+		if(tps) {
+			s("\tFinished in: %f seconds (just this function)\n"
+				.format(cast(double) this.FunctionTime / cast(double) tps));
+			s("\tFinished in: %f seconds (this function and all descendants)\n"
+				.format(cast(double) this.Time / cast(double) tps));
+		} else {
+			s("\tFinished in: %d ticks (just this function)\n".format(this.FunctionTime));
+			s("\tFinished in: %d ticks (this function and all descendants)\n"
+				.format(this.Time));
+		}
+	}
+}
+
+struct Profile {
+	Function[] functions;
+	ulong TicksPerSecond;
+
+	this(ref File f) {
+		Function temp;
+		bool newEntry = false;
+		foreach(ref line; f.byLine) {
+			if(line.length == 0) {
+				continue;
+			} else if(line[0] == '-') {
+				newEntry = true;
+				if(temp.Me.Name.length)
+					this.functions ~= temp;
+					temp = Function();
+			} else if(line[0] == '=') {
+				auto i = line.indexOfAny("0123456789");
+				assert(i > 0);
+				auto s = line[i..$].indexOfNeither("0123456789");
+				this.TicksPerSecond = line[i..i + s].to!ulong;
+				break;
+			} else if(line[0] == '\t') {
+				auto cap = line.matchFirst(
+					regex(r"\t\s*(\d+)\t\s*(\w+)"));
+				assert(!cap.empty);
+				if(newEntry) {
+					temp.calledBy(FunctionElement(
+						cap[2].demangle,
+						cap[2],
+						cap[1].to!ulong));
+				} else {
+					temp.callsTo(FunctionElement(
+						cap[2].demangle,
+						cap[2],
+						cap[1].to!ulong));
+				}
+			} else {
+				auto cap = line.matchFirst(
+					regex(r"(\w+)\t\s*-?(\d+)\t\s*-?(\d+)\t\s*-?(\d+)"));
+				assert(!cap.empty);
+				newEntry = false;
+
+				temp = Function(
+					cap[1].demangle,
+					cap[1],
+					cap[2].to!ulong,
+					cap[3].to!ulong,
+					cap[4].to!ulong);
+			}
+		}
+	}
+
+	const void toString(scope void delegate(const(char)[]) s) {
+		foreach(ref f; this.functions) {
+			f.toString(s, this.TicksPerSecond);
+		}
+	}
+}
