@@ -5,6 +5,7 @@ import std.stdio : File;
 import std.string : indexOfAny, indexOfNeither;
 import std.conv : to;
 import std.regex : regex, matchFirst;
+import std.json : JSONValue;;
 
 alias HASH = ubyte[4];
 
@@ -59,15 +60,43 @@ struct Function {
 		}
 	}
 
-	const void toJSON(scope void delegate(const(char)[]) s, ulong tps = 0) {
-		import std.format;
-		s('{');
-		s('"name":"%s","mangled":"%s",'.format(this.Me.Name, this.Me.Mangled));
-		if(this.CalledBy) {
-			s('"calledBy":{');
-			foreach(k, v; this.CalledBy)
-				s('[')
+	JSONValue toJSON(ulong tps = 0) {
+		JSONValue ret = JSONValue([
+			"name": this.Me.Name,
+			"mangled": this.Me.Mangled
+		]);
+		if(this.CallsTo) {
+			JSONValue[] temp;
+			foreach(k, v; this.CallsTo) {
+				temp ~= JSONValue([
+					"name": JSONValue(v.Name),
+					"mangled": JSONValue(v.Mangled),
+					"calls": JSONValue(v.Calls)
+				]);
+			}
+			ret["callsTo"] = JSONValue(temp);
 		}
+		if(this.CalledBy) {
+			JSONValue[] temp;
+			foreach(k, v; this.CalledBy) {
+				temp ~= JSONValue([
+					"name": JSONValue(v.Name),
+					"mangled": JSONValue(v.Mangled),
+					"calls": JSONValue(v.Calls)
+				]);
+			}
+			ret["calledBy"] = JSONValue(temp);
+		}
+		if(tps) {
+			ret["functionTimeSec"] = JSONValue(
+				cast(double) this.FunctionTime / cast(double) tps);
+			ret["timeSec"] = JSONValue(
+				cast(double) this.Time / cast(double) tps);
+			ret["tps"] = JSONValue(tps);
+		}
+		ret["functionTime"] = JSONValue(this.FunctionTime);
+		ret["time"] = JSONValue(this.Time);
+		return ret;
 	}
 }
 
@@ -132,10 +161,10 @@ struct Profile {
 	}
 
 	JSONValue toJSON() {
-		JSONValue ret;
+		JSONValue[] ret;
 		foreach(ref f; this.functions) {
-			ret ~= f.toJSON;
+			ret ~= f.toJSON(this.TicksPerSecond);
 		}
-		return ret;
+		return JSONValue(ret);
 	}
 }
