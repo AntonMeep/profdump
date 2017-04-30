@@ -1,5 +1,6 @@
 module profile;
 
+import std.experimental.logger;
 import core.demangle : demangle;
 import std.stdio : File;
 import std.string : indexOfAny, indexOfNeither;
@@ -20,14 +21,6 @@ struct Function {
 	FunctionElement[HASH] CalledBy;
 	ulong Time;
 	ulong FunctionTime;
-
-	this(char[] name, char[] mangled, ulong calls = 0, ulong time = 0, ulong ftime = 0) {
-		this.Me.Name = name;
-		this.Me.Mangled = mangled;
-		this.Me.Calls = calls;
-		this.Time = time;
-		this.FunctionTime = ftime;
-	}
 
 	void callsTo(FunctionElement func) {
 		import std.digest.crc : crc32Of;
@@ -80,9 +73,10 @@ struct Profile {
 				continue;
 			} else if(line[0] == '-') {
 				newEntry = true;
-				if(temp.Me.Name.length)
+				if(temp.Me.Name.length != 0) {
 					this.functions ~= temp;
 					temp = Function();
+				}
 			} else if(line[0] == '=') {
 				auto i = line.indexOfAny("0123456789");
 				assert(i > 0);
@@ -109,14 +103,15 @@ struct Profile {
 					regex(r"(\w+)\t\s*-?(\d+)\t\s*-?(\d+)\t\s*-?(\d+)"));
 				assert(!cap.empty);
 				newEntry = false;
-
-				temp = Function(
+				temp.Me = FunctionElement(
 					cap[1].demangle,
 					cap[1],
-					cap[2].to!ulong,
-					cap[3].to!ulong,
-					cap[4].to!ulong);
+					cap[2].to!ulong);
+				temp.Time = cap[3].to!ulong;
+				temp.FunctionTime = cap[4].to!ulong;
 			}
+			log(line);
+			log(temp);
 		}
 	}
 
