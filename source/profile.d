@@ -19,8 +19,8 @@ struct Function {
 	FunctionElement Me;
 	FunctionElement[HASH] CallsTo;
 	FunctionElement[HASH] CalledBy;
-	ulong Time;
 	ulong FunctionTime;
+	ulong Time;
 
 	void callsTo(FunctionElement func) {
 		import std.digest.crc : crc32Of;
@@ -78,6 +78,8 @@ struct Profile {
 					temp = Function();
 				}
 			} else if(line[0] == '=') {
+				if(temp.Me.Name.length != 0)
+					this.functions ~= temp;
 				auto i = line.indexOfAny("0123456789");
 				assert(i > 0);
 				auto s = line[i..$].indexOfNeither("0123456789");
@@ -89,13 +91,13 @@ struct Profile {
 				assert(!cap.empty);
 				if(newEntry) {
 					temp.calledBy(FunctionElement(
-						cap[2].demangle,
-						cap[2],
+						cap[2].demangle.dup,
+						cap[2].dup,
 						cap[1].to!ulong));
 				} else {
 					temp.callsTo(FunctionElement(
-						cap[2].demangle,
-						cap[2],
+						cap[2].demangle.dup,
+						cap[2].dup,
 						cap[1].to!ulong));
 				}
 			} else {
@@ -104,14 +106,12 @@ struct Profile {
 				assert(!cap.empty);
 				newEntry = false;
 				temp.Me = FunctionElement(
-					cap[1].demangle,
-					cap[1],
+					cap[1].demangle.dup,
+					cap[1].dup,
 					cap[2].to!ulong);
-				temp.Time = cap[3].to!ulong;
-				temp.FunctionTime = cap[4].to!ulong;
+				temp.FunctionTime = cap[3].to!ulong;
+				temp.Time = cap[4].to!ulong;
 			}
-			log(line);
-			log(temp);
 		}
 	}
 
