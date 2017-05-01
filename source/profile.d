@@ -34,8 +34,10 @@ struct Function {
 		this.CalledBy[h] = func;
 	}
 
-	const void toString(scope void delegate(const(char)[]) s, ulong tps = 0) {
+	const void toString(scope void delegate(const(char)[]) s, ulong tps = 0, double threshold = 0) {
 		import std.format : format;
+		if(threshold != 0 && (cast(double) this.Time / cast(double) tps) < threshold)
+			return;
 		s("Function '%s':\n".format(this.Me.Name));
 		s("\tMangled name: '%s'\n".format(this.Me.Mangled));
 		if(this.CallsTo) {
@@ -60,7 +62,9 @@ struct Function {
 		}
 	}
 
-	JSONValue toJSON(ulong tps = 0) {
+	JSONValue toJSON(ulong tps = 0, double threshold = 0) {
+		if(threshold != 0 && (cast(double) this.Time / cast(double) tps) < threshold)
+			return JSONValue(null);
 		JSONValue ret = JSONValue([
 			"name": this.Me.Name,
 			"mangled": this.Me.Mangled
@@ -100,10 +104,12 @@ struct Function {
 }
 
 struct Profile {
-	Function[] Functions;
+	Function[HASH] Functions;
 	ulong TicksPerSecond;
 
 	this(ref File f) {
+		import std.digest.crc : crc32Of;
+
 		Function temp;
 		bool newEntry = false;
 		foreach(ref line; f.byLine) {
@@ -112,12 +118,12 @@ struct Profile {
 			} else if(line[0] == '-') {
 				newEntry = true;
 				if(temp.Me.Name.length != 0) {
-					this.Functions ~= temp;
+					this.Functions[temp.Me.Mangled.crc32Of] = temp;
 					temp = Function();
 				}
 			} else if(line[0] == '=') {
 				if(temp.Me.Name.length != 0)
-					this.Functions ~= temp;
+					this.Functions[temp.Me.Mangled.crc32Of] = temp;
 				auto i = line.indexOfAny("0123456789");
 				assert(i > 0);
 				auto s = line[i..$].indexOfNeither("0123456789");
@@ -153,32 +159,35 @@ struct Profile {
 		}
 	}
 
-	const void toString(scope void delegate(const(char)[]) s) {
+	const void toString(scope void delegate(const(char)[]) s, double threshold = 0) {
 		foreach(ref f; this.Functions) {
-			f.toString(s, this.TicksPerSecond);
+			f.toString(s, this.TicksPerSecond, threshold);
 		}
 	}
 
-	JSONValue toJSON() {
+	JSONValue toJSON(double threshold = 0) {
 		JSONValue[] ret;
 		foreach(ref f; this.Functions) {
-			ret ~= f.toJSON(this.TicksPerSecond);
+			ret ~= f.toJSON(this.TicksPerSecond, threshold);
 		}
 		return JSONValue([
 			"tps" : JSONValue(this.TicksPerSecond),
 			"functions" : JSONValue(ret)]);
 	}
 
-	const void toDOT(scope void delegate(const(char)[]) s) {
+	const void toDOT(scope void delegate(const(char)[]) s, double threshold = 0) {
 		import std.format : format;
-		import std.string : tr;
+		import std.string : tr, wrap;
 		s("digraph {\n");
 		foreach(ref f; this.Functions) {
-			s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n"
-				.format(
-					f.Me.Mangled.tr("\"", "\\\""),
-					f.Me.Name.tr("\"", "\\\""),
-					cast(double) f.Time / cast(double) this.TicksPerSecond));
+			double time = cast(double) f.Time / cast(double) this.TicksPerSecond;
+			if(threshold != 0 && time < threshold) {
+					continue;
+			}
+			s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
+				f.Me.Mangled.tr("\"", "\\\""),
+				f.Me.Name.tr("\"", "\\\"").wrap(40),
+				time));
 			foreach(ref c; f.CallsTo) {
 				s("\"%s\" -> \"%s\" [label=\"%dx\"];\n"
 					.format(
