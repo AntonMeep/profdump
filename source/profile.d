@@ -92,7 +92,6 @@ struct Function {
 				cast(double) this.FunctionTime / cast(double) tps);
 			ret["timeSec"] = JSONValue(
 				cast(double) this.Time / cast(double) tps);
-			ret["tps"] = JSONValue(tps);
 		}
 		ret["functionTime"] = JSONValue(this.FunctionTime);
 		ret["time"] = JSONValue(this.Time);
@@ -101,7 +100,7 @@ struct Function {
 }
 
 struct Profile {
-	Function[] functions;
+	Function[] Functions;
 	ulong TicksPerSecond;
 
 	this(ref File f) {
@@ -113,12 +112,12 @@ struct Profile {
 			} else if(line[0] == '-') {
 				newEntry = true;
 				if(temp.Me.Name.length != 0) {
-					this.functions ~= temp;
+					this.Functions ~= temp;
 					temp = Function();
 				}
 			} else if(line[0] == '=') {
 				if(temp.Me.Name.length != 0)
-					this.functions ~= temp;
+					this.Functions ~= temp;
 				auto i = line.indexOfAny("0123456789");
 				assert(i > 0);
 				auto s = line[i..$].indexOfNeither("0123456789");
@@ -155,16 +154,18 @@ struct Profile {
 	}
 
 	const void toString(scope void delegate(const(char)[]) s) {
-		foreach(ref f; this.functions) {
+		foreach(ref f; this.Functions) {
 			f.toString(s, this.TicksPerSecond);
 		}
 	}
 
 	JSONValue toJSON() {
 		JSONValue[] ret;
-		foreach(ref f; this.functions) {
+		foreach(ref f; this.Functions) {
 			ret ~= f.toJSON(this.TicksPerSecond);
 		}
-		return JSONValue(ret);
+		return JSONValue([
+			"tps" : JSONValue(this.TicksPerSecond),
+			"functions" : JSONValue(ret)]);
 	}
 }

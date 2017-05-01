@@ -1,10 +1,3 @@
-#!/usr/bin/env dub
-/++
-dub.json:
-{
-	"name": "example"
-}
-+/
 
 void main() {
 	foreach(i; 0..10) {
