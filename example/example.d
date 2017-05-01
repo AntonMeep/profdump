@@ -1,4 +1,3 @@
-
 void main() {
 	foreach(i; 0..10) {
 		fib(i);
@@ -7,6 +6,9 @@ void main() {
 	foreach(i; 0..10) {
 		sum(i,1);
 	}
+
+	child1(10);
+	child2(20);
 }
 
 int sum(int a, int b) {
@@ -23,3 +25,13 @@ size_t fib(size_t i) {
 	}
 }
 
+int child1(int i) {
+	return i+1;
+}
+
+int child2(int i) {
+	child1(i);
+	child1(i);
+	return i;
+}
+ 

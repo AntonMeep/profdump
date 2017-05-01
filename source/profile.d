@@ -171,18 +171,20 @@ struct Profile {
 
 	const void toDOT(scope void delegate(const(char)[]) s) {
 		import std.format : format;
+		import std.string : tr;
 		s("digraph {\n");
 		foreach(ref f; this.Functions) {
-			s("\"%s\"[label=\"%s\\n%f s\" shape=\"box\"];\n"
+			s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n"
 				.format(
-					f.Me.Mangled,
-					f.Me.Name,
+					f.Me.Mangled.tr("\"", "\\\""),
+					f.Me.Name.tr("\"", "\\\""),
 					cast(double) f.Time / cast(double) this.TicksPerSecond));
 			foreach(ref c; f.CallsTo) {
-				s("\"%s\"[label=\"%s\" shape=\"box\"];\n"
-					.format(c.Mangled, c.Name));
-				s("\"%s\" -> \"%s\"[label=\"%dx\"];\n"
-					.format(f.Me.Mangled, c.Mangled, c.Calls));
+				s("\"%s\" -> \"%s\" [label=\"%dx\"];\n"
+					.format(
+						f.Me.Mangled.tr("\"", "\\\""),
+						c.Mangled.tr("\"", "\\\""),
+						c.Calls));
 			}
 		}
 		s("}\n");
