@@ -4,6 +4,6 @@ import profile;
 
 int main(string[] args) {
 	auto f = File(args[1], "r");
-	writeln(Profile(f).toJSON.toPrettyString());
+	Profile(f).toDOT((const(char)[] s) {write(s);});
 	return 0;
 }

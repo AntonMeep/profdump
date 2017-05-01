@@ -168,4 +168,23 @@ struct Profile {
 			"tps" : JSONValue(this.TicksPerSecond),
 			"functions" : JSONValue(ret)]);
 	}
+
+	const void toDOT(scope void delegate(const(char)[]) s) {
+		import std.format : format;
+		s("digraph {\n");
+		foreach(ref f; this.Functions) {
+			s("\"%s\"[label=\"%s\\n%f s\" shape=\"box\"];\n"
+				.format(
+					f.Me.Mangled,
+					f.Me.Name,
+					cast(double) f.Time / cast(double) this.TicksPerSecond));
+			foreach(ref c; f.CallsTo) {
+				s("\"%s\"[label=\"%s\" shape=\"box\"];\n"
+					.format(c.Mangled, c.Name));
+				s("\"%s\" -> \"%s\"[label=\"%dx\"];\n"
+					.format(f.Me.Mangled, c.Mangled, c.Calls));
+			}
+		}
+		s("}\n");
+	}
 }
