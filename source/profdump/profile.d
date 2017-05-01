@@ -1,7 +1,6 @@
 module profdump.profile;
 
 import profdump.func;
-import profdump.tree;
 import profdump.utility;
 import std.stdio : File;
 import std.string : indexOfAny, indexOfNeither;
@@ -62,22 +61,6 @@ struct Profile {
 				temp.Time = cap[3].to!ulong;
 			}
 		}
-	}
-
-	Function findFunction(char[] name) {
-		import std.digest.crc : crc32Of;
-		HASH h = name.crc32Of;
-		if(h !in this.Functions) {
-			return Function();
-		} else {
-			return this.Functions[h];
-		}
-	}
-
-	TreeNode buildTree() {
-		
-		TreeNode ret = TreeNode();
-		return ret;
 	}
 
 	const void toString(scope void delegate(const(char)[]) s, double threshold = 0) {
