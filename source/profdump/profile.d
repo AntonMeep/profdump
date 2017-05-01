@@ -82,20 +82,24 @@ struct Profile {
 	const void toDOT(scope void delegate(const(char)[]) s, double threshold = 0) {
 		import std.format : format;
 		import std.string : tr, wrap;
+		import std.typecons : Tuple, tuple;
 		s("digraph {\n");
-		foreach(ref f; this.Functions) {
-			double time = cast(double) f.Time / cast(double) this.TicksPerSecond;
-			if(threshold != 0 && time < threshold) {
-					continue;
+		Tuple!(HASH, double)[] func;
+		foreach(k, ref v; this.Functions) {
+			double time = cast(double) v.Time / cast(double) this.TicksPerSecond;
+			if(threshold == 0 || time > threshold) {
+				func ~= tuple(k, time);
 			}
+		}
+		foreach(k; func) {
 			s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
-				f.Mangled.tr("\"", "\\\""),
-				f.Name.tr("\"", "\\\"").wrap(40),
-				time));
-			foreach(ref c; f.CallsTo) {
+				this.Functions[k[0]].Mangled.tr("\"", "\\\""),
+				this.Functions[k[0]].Name.tr("\"", "\\\"").wrap(40),
+				k[1]));
+			foreach(ref c; this.Functions[k[0]].CallsTo) {
 				s("\"%s\" -> \"%s\" [label=\"%dx\"];\n"
 					.format(
-						f.Mangled.tr("\"", "\\\""),
+						this.Functions[k[0]].Mangled.tr("\"", "\\\""),
 						c.Mangled.tr("\"", "\\\""),
 						c.Calls));
 			}
