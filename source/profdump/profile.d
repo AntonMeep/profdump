@@ -82,27 +82,38 @@ struct Profile {
 	const void toDOT(scope void delegate(const(char)[]) s, double threshold = 0) {
 		import std.format : format;
 		import std.string : tr, wrap;
-		import std.typecons : Tuple, tuple;
+		import std.algorithm : canFind;
 		s("digraph {\n");
-		Tuple!(HASH, double)[] func;
+		HASH[] func;
 		foreach(k, ref v; this.Functions) {
-			double time = cast(double) v.Time / cast(double) this.TicksPerSecond;
+			const double time = cast(double) v.Time / cast(double) this.TicksPerSecond;
 			if(threshold == 0 || time > threshold) {
-				func ~= tuple(k, time);
+				func ~= k;
 			}
 		}
-		foreach(k; func) {
+		HASH[] deps;
+		foreach(ref i; func) {
 			s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
-				this.Functions[k[0]].Mangled.tr("\"", "\\\""),
-				this.Functions[k[0]].Name.tr("\"", "\\\"").wrap(40),
-				k[1]));
-			foreach(ref c; this.Functions[k[0]].CallsTo) {
-				s("\"%s\" -> \"%s\" [label=\"%dx\"];\n"
-					.format(
-						this.Functions[k[0]].Mangled.tr("\"", "\\\""),
-						c.Mangled.tr("\"", "\\\""),
-						c.Calls));
-			}
+				this.Functions[i].Mangled.tr("\"", "\\\""),
+				this.Functions[i].Name.tr("\"", "\\\"").wrap(40),
+				cast(double) this.Functions[i].Time / cast(double) this.TicksPerSecond));
+			foreach(k, ref v; this.Functions[i].CallsTo)
+				if(!func.canFind(k) && !deps.canFind(k)) {
+					s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
+					this.Functions[k].Mangled.tr("\"", "\\\""),
+					this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
+					cast(double) this.Functions[k].Time / cast(double) this.TicksPerSecond));
+					deps ~= k;
+				}
+		}
+		foreach(ref i; func) {
+			foreach(k, ref v; this.Functions[i].CallsTo)
+				if(deps.canFind(k))
+					s("\"%s\" -> \"%s\" [label=\"%dx\"];\n"
+						.format(
+						this.Functions[i].Mangled.tr("\"", "\\\""),
+						v.Mangled.tr("\"", "\\\""),
+						v.Calls));
 		}
 		s("}\n");
 	}
