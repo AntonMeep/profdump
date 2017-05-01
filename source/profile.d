@@ -147,8 +147,8 @@ struct Profile {
 					cap[1].demangle.dup,
 					cap[1].dup,
 					cap[2].to!ulong);
-				temp.FunctionTime = cap[3].to!ulong;
-				temp.Time = cap[4].to!ulong;
+				temp.FunctionTime = cap[4].to!ulong;
+				temp.Time = cap[3].to!ulong;
 			}
 		}
 	}
