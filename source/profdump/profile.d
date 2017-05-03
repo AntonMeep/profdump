@@ -85,39 +85,47 @@ struct Profile {
 		import std.string : tr, wrap;
 		import std.algorithm : canFind;
 		s("digraph {\n");
-		HASH[] func;
+		HASH[][HASH] func;
 		foreach(k, ref v; this.Functions) {
 			const float time = cast(float) v.Time / cast(float) this.TicksPerSecond;
 			if(threshold == 0 || time > threshold) {
-				func ~= k;
-			}
-		}
-		HASH[] deps;
-		foreach(ref i; func) {
-			s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
-				this.Functions[i].Mangled.tr("\"", "\\\""),
-				this.Functions[i].Name.tr("\"", "\\\"").wrap(40),
-				cast(float) this.Functions[i].Time / cast(float) this.TicksPerSecond));
-			foreach(k, ref v; this.Functions[i].CallsTo) {
-				const(float) time = cast(float) this.Functions[k].Time /
-					cast(float) this.TicksPerSecond;
-				if(!func.canFind(k) && !deps.canFind(k) && time > threshold) {
-					s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
-						this.Functions[k].Mangled.tr("\"", "\\\""),
-						this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
-						time));
-					deps ~= k;
+				func[k] = [];
+				foreach(key, unused; v.CallsTo) {
+					if(threshold != 0 &&
+					cast(float) this.Functions[key].Time /
+						cast(float) this.TicksPerSecond <=
+							threshold)
+								continue;
+					if(key !in func)
+						func[key] = [];
+					func[k] ~= key;
 				}
+			} else {
+				continue;
 			}
 		}
-		foreach(ref i; func) {
-			foreach(k, ref v; this.Functions[i].CallsTo)
-				if(deps.canFind(k))
-					s("\"%s\" -> \"%s\" [label=\"%dx\"];\n"
-						.format(
+
+		foreach(k, ref v; func) {
+			s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
+				this.Functions[k].Mangled.tr("\"", "\\\""),
+				this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
+				cast(float) this.Functions[k].Time / cast(float) this.TicksPerSecond));
+			foreach(i; v) {
+				if(i !in func)
+					s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
 						this.Functions[i].Mangled.tr("\"", "\\\""),
-						v.Mangled.tr("\"", "\\\""),
-						v.Calls));
+						this.Functions[i].Name.tr("\"", "\\\"").wrap(40),
+						cast(float) this.Functions[i].Time /
+							cast(float) this.TicksPerSecond));
+			}
+		}
+
+		foreach(k, ref v; func) {
+			foreach(i; v)
+				s("\"%s\" -> \"%s\" [label=\"%dx\"];\n".format(
+					this.Functions[k].Mangled.tr("\"", "\\\""),
+					this.Functions[i].Mangled.tr("\"", "\\\""),
+					this.Functions[k].CallsTo[i].Calls));
 		}
 		s("}\n");
 	}
