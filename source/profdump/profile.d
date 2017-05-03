@@ -164,15 +164,11 @@ struct Profile {
 						this.functionTimeOf(i),
 						colourize(this.timeOf(i) / mainTime * 100)));
 				}
-			}
-		}
-
-		foreach(k, ref v; func) {
-			foreach(i; v)
 				s("\"%s\" -> \"%s\" [label=\"%dx\"];\n".format(
 					this.Functions[k].Mangled.tr("\"", "\\\""),
 					this.Functions[i].Mangled.tr("\"", "\\\""),
 					this.Functions[k].CallsTo[i].Calls));
+			}
 		}
 		s("}\n");
 	}
