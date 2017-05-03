@@ -106,6 +106,7 @@ struct Profile {
 		assert(main in this.Functions);
 
 		const float mainTime = this.timeOf(main);
+		enum fmt = "\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\\n%fs(%fs)\", shape=\"box\"];\n";
 
 		foreach(k, ref v; this.Functions) {
 			if(threshold == 0 || this.timeOf(k) > threshold) {
@@ -123,21 +124,22 @@ struct Profile {
 		}
 
 		foreach(k, ref v; func) {
-			s("\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\\n%f s\", shape=\"box\"];\n".format(
+			s(fmt.format(
 				this.Functions[k].Mangled.tr("\"", "\\\""),
 				this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
 				this.timeOf(k) / mainTime * 100,
 				this.functionTimeOf(k) / mainTime * 100,
-				this.timeOf(k)));
+				this.timeOf(k),
+				this.functionTimeOf(k)));
 			foreach(i; v) {
 				if(i !in func) {
-					s("\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\\n%f s\", shape=\"box\"];\n"
-					.format(
+					s(fmt.format(
 						this.Functions[i].Mangled.tr("\"", "\\\""),
 						this.Functions[i].Name.tr("\"", "\\\"").wrap(40),
 						this.timeOf(i) / mainTime * 100,
 						this.functionTimeOf(i) / mainTime * 100,
-						this.timeOf(i)));
+						this.timeOf(i),
+						this.functionTimeOf(i)));
 				}
 			}
 		}
