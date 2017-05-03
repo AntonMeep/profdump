@@ -96,7 +96,27 @@ struct Profile {
 			cast(float) this.TicksPerSecond;
 	}
 
-	const void toDOT(scope void delegate(const(char)[]) s, float threshold = 0) {
+	const void toDOT(scope void delegate(const(char)[]) s,
+			float threshold = 0,
+			string[4] colour = [
+				"green",
+				"yellow",
+				"orange",
+				"red"
+			]
+		) {
+		string colourize(float f) {
+			if(f <= 100 && f > 75) {
+				return colour[3];
+			} else if(f <= 75 && f > 50) {
+				return colour[2];
+			} else if(f <= 50 && f > 25) {
+				return colour[1];
+			} else {
+				return colour[0];
+			}
+		}
+
 		import std.format : format;
 		import std.string : tr, wrap;
 		import std.digest.crc : crc32Of;
@@ -106,7 +126,8 @@ struct Profile {
 		assert(main in this.Functions);
 
 		const float mainTime = this.timeOf(main);
-		enum fmt = "\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\\n%fs(%fs)\", shape=\"box\"];\n";
+		enum fmt = "\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\\n%fs(%fs)\", shape=\"box\"," ~
+			" style=filled, fillcolor=\"%s\"];\n";
 
 		foreach(k, ref v; this.Functions) {
 			if(threshold == 0 || this.timeOf(k) > threshold) {
@@ -130,7 +151,8 @@ struct Profile {
 				this.timeOf(k) / mainTime * 100,
 				this.functionTimeOf(k) / mainTime * 100,
 				this.timeOf(k),
-				this.functionTimeOf(k)));
+				this.functionTimeOf(k),
+				colourize(this.timeOf(k) / mainTime * 100)));
 			foreach(i; v) {
 				if(i !in func) {
 					s(fmt.format(
@@ -139,7 +161,8 @@ struct Profile {
 						this.timeOf(i) / mainTime * 100,
 						this.functionTimeOf(i) / mainTime * 100,
 						this.timeOf(i),
-						this.functionTimeOf(i)));
+						this.functionTimeOf(i),
+						colourize(this.timeOf(i) / mainTime * 100)));
 				}
 			}
 		}
