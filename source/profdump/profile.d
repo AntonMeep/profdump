@@ -6,7 +6,8 @@ import std.stdio : File;
 import std.string : indexOfAny, indexOfNeither;
 import std.conv : to;
 import std.regex : regex, matchFirst;
-import std.json : JSONValue;;
+import std.json : JSONValue;
+import std.experimental.logger;
 
 struct Profile {
 	Function[HASH] Functions;
@@ -63,13 +64,13 @@ struct Profile {
 		}
 	}
 
-	const void toString(scope void delegate(const(char)[]) s, double threshold = 0) {
+	const void toString(scope void delegate(const(char)[]) s, float threshold = 0) {
 		foreach(ref f; this.Functions) {
 			f.toString(s, this.TicksPerSecond, threshold);
 		}
 	}
 
-	JSONValue toJSON(double threshold = 0) {
+	JSONValue toJSON(float threshold = 0) {
 		JSONValue[] ret;
 		foreach(ref f; this.Functions) {
 			ret ~= f.toJSON(this.TicksPerSecond, threshold);
@@ -79,14 +80,14 @@ struct Profile {
 			"functions" : JSONValue(ret)]);
 	}
 
-	const void toDOT(scope void delegate(const(char)[]) s, double threshold = 0) {
+	const void toDOT(scope void delegate(const(char)[]) s, float threshold = 0) {
 		import std.format : format;
 		import std.string : tr, wrap;
 		import std.algorithm : canFind;
 		s("digraph {\n");
 		HASH[] func;
 		foreach(k, ref v; this.Functions) {
-			const double time = cast(double) v.Time / cast(double) this.TicksPerSecond;
+			const float time = cast(float) v.Time / cast(float) this.TicksPerSecond;
 			if(threshold == 0 || time > threshold) {
 				func ~= k;
 			}
@@ -96,15 +97,18 @@ struct Profile {
 			s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
 				this.Functions[i].Mangled.tr("\"", "\\\""),
 				this.Functions[i].Name.tr("\"", "\\\"").wrap(40),
-				cast(double) this.Functions[i].Time / cast(double) this.TicksPerSecond));
-			foreach(k, ref v; this.Functions[i].CallsTo)
-				if(!func.canFind(k) && !deps.canFind(k)) {
+				cast(float) this.Functions[i].Time / cast(float) this.TicksPerSecond));
+			foreach(k, ref v; this.Functions[i].CallsTo) {
+				const(float) time = cast(float) this.Functions[k].Time /
+					cast(float) this.TicksPerSecond;
+				if(!func.canFind(k) && !deps.canFind(k) && time > threshold) {
 					s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
-					this.Functions[k].Mangled.tr("\"", "\\\""),
-					this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
-					cast(double) this.Functions[k].Time / cast(double) this.TicksPerSecond));
+						this.Functions[k].Mangled.tr("\"", "\\\""),
+						this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
+						time));
 					deps ~= k;
 				}
+			}
 		}
 		foreach(ref i; func) {
 			foreach(k, ref v; this.Functions[i].CallsTo)
