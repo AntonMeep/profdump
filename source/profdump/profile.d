@@ -80,22 +80,39 @@ struct Profile {
 			"functions" : JSONValue(ret)]);
 	}
 
+	const float timeOf(HASH f)
+	in {
+		assert(f in this.Functions);
+	} body {
+		return cast(float) this.Functions[f].Time /
+			cast(float) this.TicksPerSecond;
+	}
+
+	const float functionTimeOf(HASH f)
+	in {
+		assert(f in this.Functions);
+	} body {
+		return cast(float) this.Functions[f].FunctionTime /
+			cast(float) this.TicksPerSecond;
+	}
+
 	const void toDOT(scope void delegate(const(char)[]) s, float threshold = 0) {
 		import std.format : format;
 		import std.string : tr, wrap;
-		import std.algorithm : canFind;
+		import std.digest.crc : crc32Of;
 		s("digraph {\n");
 		HASH[][HASH] func;
+		const HASH main = "_Dmain".crc32Of;
+		assert(main in this.Functions);
+
+		const float mainTime = this.timeOf(main);
+
 		foreach(k, ref v; this.Functions) {
-			const float time = cast(float) v.Time / cast(float) this.TicksPerSecond;
-			if(threshold == 0 || time > threshold) {
+			if(threshold == 0 || this.timeOf(k) > threshold) {
 				func[k] = [];
 				foreach(key, unused; v.CallsTo) {
-					if(threshold != 0 &&
-					cast(float) this.Functions[key].Time /
-						cast(float) this.TicksPerSecond <=
-							threshold)
-								continue;
+					if(threshold != 0 && this.timeOf(key) <= threshold)
+						continue;
 					if(key !in func)
 						func[key] = [];
 					func[k] ~= key;
@@ -106,17 +123,22 @@ struct Profile {
 		}
 
 		foreach(k, ref v; func) {
-			s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
+			s("\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\\n%f s\", shape=\"box\"];\n".format(
 				this.Functions[k].Mangled.tr("\"", "\\\""),
 				this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
-				cast(float) this.Functions[k].Time / cast(float) this.TicksPerSecond));
+				this.timeOf(k) / mainTime * 100,
+				this.functionTimeOf(k) / mainTime * 100,
+				this.timeOf(k)));
 			foreach(i; v) {
-				if(i !in func)
-					s("\"%s\" [label=\"%s\\n%f s\", shape=\"box\"];\n".format(
+				if(i !in func) {
+					s("\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\\n%f s\", shape=\"box\"];\n"
+					.format(
 						this.Functions[i].Mangled.tr("\"", "\\\""),
 						this.Functions[i].Name.tr("\"", "\\\"").wrap(40),
-						cast(float) this.Functions[i].Time /
-							cast(float) this.TicksPerSecond));
+						this.timeOf(i) / mainTime * 100,
+						this.functionTimeOf(i) / mainTime * 100,
+						this.timeOf(i)));
+				}
 			}
 		}
 
