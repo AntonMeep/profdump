@@ -98,28 +98,29 @@ struct Profile {
 
 	const void toDOT(scope void delegate(const(char)[]) s,
 			float threshold = 0,
-			string[4] colour = [
-				"green",
-				"yellow",
-				"orange",
-				"red"
+			string[float] colours = [
+				0: "limegreen",
+				10: "slateblue",
+				25: "steelblue",
+				50: "royalblue",
+				75: "navy",
+				95: "red"
 			]
 		) {
-		string colourize(float f) {
-			if(f <= 100 && f > 75) {
-				return colour[3];
-			} else if(f <= 75 && f > 50) {
-				return colour[2];
-			} else if(f <= 50 && f > 25) {
-				return colour[1];
-			} else {
-				return colour[0];
-			}
-		}
-
 		import std.format : format;
 		import std.string : tr, wrap;
 		import std.digest.crc : crc32Of;
+
+		string clr(float f) {
+			import std.algorithm : sort;
+			foreach(k; sort!("a>b")(colours.keys)) {
+				if(k <= f) {
+					return colours[k];
+				}
+			}
+			return "gray";
+		}
+
 		s("digraph {\n");
 		HASH[][HASH] func;
 		const HASH main = "_Dmain".crc32Of;
@@ -152,7 +153,7 @@ struct Profile {
 				this.functionTimeOf(k) / mainTime * 100,
 				this.timeOf(k),
 				this.functionTimeOf(k),
-				colourize(this.timeOf(k) / mainTime * 100)));
+				clr(this.timeOf(k) / mainTime * 100)));
 			foreach(i; v) {
 				if(i !in func) {
 					s(fmt.format(
@@ -162,7 +163,7 @@ struct Profile {
 						this.functionTimeOf(i) / mainTime * 100,
 						this.timeOf(i),
 						this.functionTimeOf(i),
-						colourize(this.timeOf(i) / mainTime * 100)));
+						clr(this.timeOf(i) / mainTime * 100)));
 				}
 			}
 		}
@@ -177,3 +178,4 @@ struct Profile {
 		s("}\n");
 	}
 }
+
