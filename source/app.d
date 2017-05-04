@@ -1,6 +1,6 @@
 import std.stdio;
 
-import profdump.profile;
+import profdump;
 
 int main(string[] args) {
 	auto f = File(args[1], "r");
