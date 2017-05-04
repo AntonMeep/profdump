@@ -8,7 +8,8 @@ import std.json : JSONValue;
 import std.experimental.logger;
 
 alias HASH = ubyte[4];
-char[] demangle(const(char)[] buf) {
+
+private char[] demangle(const(char)[] buf) {
 	static import core.demangle;
 	if(buf == "_Dmain".dup) {
 		return "void main()".dup;
@@ -88,7 +89,7 @@ struct Profile {
 			"functions" : JSONValue(ret)]);
 	}
 
-	const float timeOf(HASH f)
+	@safe pure nothrow const float timeOf(HASH f)
 	in {
 		assert(f in this.Functions);
 	} body {
@@ -96,7 +97,7 @@ struct Profile {
 			cast(float) this.TicksPerSecond;
 	}
 
-	const float functionTimeOf(HASH f)
+	@safe pure nothrow const float functionTimeOf(HASH f)
 	in {
 		assert(f in this.Functions);
 	} body {
@@ -129,7 +130,6 @@ struct Profile {
 			return "gray";
 		}
 
-		s("digraph {\n");
 		HASH[][HASH] func;
 		const HASH main = "_Dmain".crc32Of;
 		assert(main in this.Functions);
@@ -153,6 +153,7 @@ struct Profile {
 			}
 		}
 
+		s("digraph {\n");
 		foreach(k, ref v; func) {
 			s(fmt.format(
 				this.Functions[k].Mangled.tr("\"", "\\\""),
