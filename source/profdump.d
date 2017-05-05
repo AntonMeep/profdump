@@ -84,6 +84,7 @@ struct Profile {
 		in bool pretty = false) {
 		if(pretty) {
 			s(this.toJSON(threshold).toPrettyString);
+			s("\n");
 		} else {
 			s(this.toJSON(threshold).toString);
 		}
