@@ -92,8 +92,11 @@ struct Profile {
 
 	const JSONValue toJSON(in float threshold = 0) {
 		JSONValue[] ret;
-		foreach(ref f; this.Functions) {
-			ret ~= f.toJSON(this.TicksPerSecond, threshold);
+		foreach(k, ref v; this.Functions) {
+			if(threshold == 0 || this.timeOf(k) < threshold)
+				continue;
+
+			ret ~= v.toJSON(this.TicksPerSecond);
 		}
 		return JSONValue([
 			"tps" : JSONValue(this.TicksPerSecond),
@@ -250,9 +253,7 @@ struct Function {
 		}
 	}
 
-	const JSONValue toJSON(ulong tps = 0, float threshold = 0) {
-		if(threshold != 0 && (cast(float) this.Time / cast(float) tps) < threshold)
-			return JSONValue(null);
+	const JSONValue toJSON(ulong tps = 0) {
 		JSONValue ret = JSONValue([
 			"name": this.Name,
 			"mangled": this.Mangled
