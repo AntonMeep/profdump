@@ -73,13 +73,23 @@ struct Profile {
 		}
 	}
 
-	const void toString(scope void delegate(const(char)[]) s, float threshold = 0) {
+	const void toString(scope void delegate(const(char)[]) s, in float threshold = 0) {
 		foreach(ref f; this.Functions) {
 			f.toString(s, this.TicksPerSecond, threshold);
 		}
 	}
 
-	JSONValue toJSON(float threshold = 0) {
+	const void toJSONString(scope void delegate(const(char)[]) s,
+		in float threshold = 0,
+		in bool pretty = false) {
+		if(pretty) {
+			s(this.toJSON(threshold).toPrettyString);
+		} else {
+			s(this.toJSON(threshold).toString);
+		}
+	}
+
+	const JSONValue toJSON(in float threshold = 0) {
 		JSONValue[] ret;
 		foreach(ref f; this.Functions) {
 			ret ~= f.toJSON(this.TicksPerSecond, threshold);
@@ -239,7 +249,7 @@ struct Function {
 		}
 	}
 
-	JSONValue toJSON(ulong tps = 0, float threshold = 0) {
+	const JSONValue toJSON(ulong tps = 0, float threshold = 0) {
 		if(threshold != 0 && (cast(float) this.Time / cast(float) tps) < threshold)
 			return JSONValue(null);
 		JSONValue ret = JSONValue([
