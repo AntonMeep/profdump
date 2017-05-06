@@ -93,7 +93,7 @@ struct Profile {
 	const JSONValue toJSON(in float threshold = 0) {
 		JSONValue[] ret;
 		foreach(k, ref v; this.Functions) {
-			if(threshold == 0 || this.timeOf(k) < threshold)
+			if(threshold != 0 && this.timeOf(k) < threshold)
 				continue;
 
 			ret ~= v.toJSON(this.TicksPerSecond);
