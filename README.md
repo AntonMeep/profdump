@@ -12,4 +12,4 @@ profdump can convert it to:
 - [json](./example/simple.json)
 
 or just draw this beautiful graph:
-![simple graph](./example/simple.ong?raw=true)
+![simple graph](./example/simple.png?raw=true)
