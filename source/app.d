@@ -9,7 +9,7 @@ int main(string[] args) {
 	File input = stdin;
 	File output = stdout;
 	bool pretty = true;
-	float threshold = 1.0;
+	float threshold = 0.0;
 	enum TARGET : ubyte {
 		nul,
 		json,
