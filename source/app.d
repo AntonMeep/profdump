@@ -27,11 +27,11 @@ int main(string[] args) {
 		}
 	}
 	auto result = args.getopt(
-		"json|j", "", &setTarget,
-		"plain|p", "", &setTarget,
-		"dot|d", "", &setTarget,
-		"threshold|t", "", &threshold,
-		"pretty", "", &pretty
+		"json|j", "output JSON", &setTarget,
+		"plain|p", "output plain text", &setTarget,
+		"dot|d", "output dot graph", &setTarget,
+		"threshold|t", "(seconds) hide functions below this threshold (default: 1.0)", &threshold,
+		"pretty", "output pretty JSON (default: true)", &pretty
 	);
 
 	if(result.helpWanted) {
@@ -93,7 +93,15 @@ int main(string[] args) {
 	}
 }
 
+enum HELPTEXT = "Usage: profdump [options] [input file] [output file]\n" ~
+"Converts the output of dlang compiler into a plain text, json or dot graph.\n" ~
+"If input file is not specified, looks for 'trace.log' file.\n" ~
+"You can set input and output file to stdin/stdout by passing '-' instead of file name.\n" ~
+"\n" ~
+"Options:";
+
+
 int help(ref GetoptResult result) {
-	defaultGetoptPrinter("profdump", result.options);
+	defaultGetoptPrinter(HELPTEXT, result.options);
 	return 0;
 }
