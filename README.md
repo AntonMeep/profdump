@@ -8,8 +8,8 @@ profdump converts output of D programming language profiler into:
 ## Why?
 Because profiler gives you [this](../blob/master/example/simple.log). It's very hard to read and understand it.
 profdump can convert it to:
-- [plain text](../blob/master/example/simple.txt)
-- [json](../blob/master/example/simple.json)
+- [plain text](./example/simple.txt)
+- [json](./example/simple.json)
 
 or just draw this beautiful graph:
-![simple graph](../blob/master/example/simple.svg)
+![simple graph](./example/simple.svg)
