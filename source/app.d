@@ -17,7 +17,8 @@ int main(string[] args) {
 		dot
 	}
 	TARGET target = TARGET.nul;
-	string[float] colour = [
+	string[float] colour;
+	string[float] colourDefault = [
 		0: "limegreen",
 		10: "slateblue",
 		25: "steelblue",
@@ -36,6 +37,7 @@ int main(string[] args) {
 		}
 	}
 	auto result = args.getopt(
+		std.getopt.config.stopOnFirstNonOption,
 		"json|j", "output JSON", &setTarget,
 		"plain|p", "output plain text", &setTarget,
 		"dot|d", "output dot graph", &setTarget,
@@ -43,8 +45,11 @@ int main(string[] args) {
 			.format(threshold), &threshold,
 		"pretty", "output pretty JSON (default: true)", &pretty,
 		"colour", "customize colours of dot graph nodes (default: %s)"
-			.format(colour), &colour
+			.format(colourDefault), &colour
 	);
+
+	if(colour.length == 0)
+		colour = colourDefault;
 
 	if(result.helpWanted) {
 		return help(result);
