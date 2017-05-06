@@ -1,6 +1,7 @@
 import std.stdio;
 import std.getopt;
 import std.file : exists;
+import std.format : format;
 
 import profdump;
 
@@ -16,6 +17,14 @@ int main(string[] args) {
 		dot
 	}
 	TARGET target = TARGET.nul;
+	string[float] colour = [
+		0: "limegreen",
+		10: "slateblue",
+		25: "steelblue",
+		50: "royalblue",
+		75: "navy",
+		95: "red"
+	];
 
 	void setTarget(string option) {
 		if(option == "json|j") {
@@ -30,8 +39,11 @@ int main(string[] args) {
 		"json|j", "output JSON", &setTarget,
 		"plain|p", "output plain text", &setTarget,
 		"dot|d", "output dot graph", &setTarget,
-		"threshold|t", "(seconds) hide functions below this threshold (default: 1.0)", &threshold,
-		"pretty", "output pretty JSON (default: true)", &pretty
+		"threshold|t", "(seconds) hide functions below this threshold (default: %1.1f)"
+			.format(threshold), &threshold,
+		"pretty", "output pretty JSON (default: true)", &pretty,
+		"colour", "customize colours of dot graph nodes (default: %s)"
+			.format(colour), &colour
 	);
 
 	if(result.helpWanted) {
@@ -85,7 +97,7 @@ int main(string[] args) {
 			prof.toString(writer, threshold);
 			return 0;
 		case dot:
-			prof.toDOT(writer, threshold);
+			prof.toDOT(writer, threshold, colour);
 			return 0;
 		default:
 			stderr.writeln("Wrong target");
