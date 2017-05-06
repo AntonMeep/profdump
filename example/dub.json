@@ -1,5 +1,0 @@
-{
-	"name": "example",
-	"targetType": "executable",
-	"sourceFiles": ["example.d"]
-}
