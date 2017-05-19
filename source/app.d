@@ -39,6 +39,7 @@ int main(string[] args) {
 	}
 	auto result = args.getopt(
 		std.getopt.config.stopOnFirstNonOption,
+		std.getopt.config.bundling,
 		"json|j", "output JSON", &setTarget,
 		"plain|p", "output plain text", &setTarget,
 		"dot|d", "output dot graph", &setTarget,
