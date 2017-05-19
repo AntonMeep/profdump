@@ -14,6 +14,24 @@ profdump can convert it to:
 or just draw this beautiful graph:
 ![simple graph](./example/simple.png?raw=true)
 
+## Usage
+```
+Usage: profdump [options] [input file] [output file]
+Converts the output of dlang compiler into a plain text, json or dot graph.
+If input file is not specified, looks for 'trace.log' file.
+You can set input and output file to stdin/stdout by passing '-' instead of file name.
+
+Options:
+-j      --json output JSON
+-p     --plain output plain text
+-d       --dot output dot graph
+-t --threshold (seconds) hide functions below this threshold (default: 0.0)
+      --pretty output pretty JSON (default: true)
+      --colour customize colours of dot graph nodes (default: [0:"limegreen", 10:"slateblue", 50:"royalblue", 95:"red", 25:"steelblue", 75:"navy"])
+-f     --force overwrite output file if exists
+-h      --help This help information.
+```
+
 ## Graph output
 Every node represents a function and has the following layout:
 ```

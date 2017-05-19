@@ -9,6 +9,7 @@ int main(string[] args) {
 	File input = stdin;
 	File output = stdout;
 	bool pretty = true;
+	bool force = false;
 	float threshold = 0.0;
 	enum TARGET : ubyte {
 		nul,
@@ -45,7 +46,8 @@ int main(string[] args) {
 			.format(threshold), &threshold,
 		"pretty", "output pretty JSON (default: true)", &pretty,
 		"colour", "customize colours of dot graph nodes (default: %s)"
-			.format(colourDefault), &colour
+			.format(colourDefault), &colour,
+		"force|f", "overwrite output file if exists", &force
 	);
 
 	if(colour.length == 0)
@@ -79,11 +81,11 @@ int main(string[] args) {
 		if(args[2] == "-") {
 			output = stdout;
 		} else {
-			if(exists(args[2])) {
-				output = File(args[2], "w");
-			} else {
-				stderr.writefln("File '%s' does not exist", args[2]);
+			if(exists(args[2]) && !force) {
+				stderr.writefln("File '%s' already exists. Specify other file or pass '-f' option", args[2]);
 				return help(result);
+			} else {
+				output = File(args[2], "w");
 			}
 		}
 	}
