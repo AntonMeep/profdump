@@ -26,6 +26,7 @@ private char[] demangle(const(char)[] buf, bool verbose = false) {
 struct Profile {
 	Function[HASH] Functions;
 	ulong TicksPerSecond;
+	float TimeOfMain;
 
 	this(ref File f, bool verbose = false) {
 		import std.digest.crc : crc32Of;
@@ -76,6 +77,13 @@ struct Profile {
 				temp.Time = cap[3].to!ulong;
 			}
 		}
+
+		
+		const HASH main = "_Dmain".crc32Of;
+		if(main !in this.Functions)
+			throw new Exception("Your trace.log is invalid");
+
+		this.TimeOfMain = this.timeOf(main);
 	}
 
 	const void toString(scope void delegate(const(char)[]) s, in float threshold = 0) {
@@ -116,12 +124,12 @@ struct Profile {
 			cast(float) this.TicksPerSecond;
 	}
 
-	@safe pure nothrow const float percOf(HASH f, float mainTime)
+	@safe pure nothrow const float percOf(HASH f)
 	in {
 		assert(f in this.Functions);
 	} body {
 		return (cast(float) this.Functions[f].Time /
-			cast(float) this.TicksPerSecond) / mainTime * 100;
+			cast(float) this.TicksPerSecond) / TimeOfMain * 100;
 	}
 
 	@safe pure nothrow const float functionTimeOf(HASH f)
@@ -132,12 +140,12 @@ struct Profile {
 			cast(float) this.TicksPerSecond;
 	}
 
-	@safe pure nothrow const float functionPercOf(HASH f, float mainTime)
+	@safe pure nothrow const float functionPercOf(HASH f)
 	in {
 		assert(f in this.Functions);
 	} body {
 		return (cast(float) this.Functions[f].FunctionTime /
-			cast(float) this.TicksPerSecond) / mainTime * 100;
+			cast(float) this.TicksPerSecond) / TimeOfMain * 100;
 	}
 
 	const void toDOT(scope void delegate(const(char)[]) s,
@@ -166,18 +174,14 @@ struct Profile {
 		}
 
 		HASH[][HASH] func;
-		const HASH main = "_Dmain".crc32Of;
-		assert(main in this.Functions);
-
-		const float mainTime = this.timeOf(main);
 		enum fmt = "\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\", shape=\"box\"," ~
 			" style=filled, fillcolor=\"%s\"];\n";
 
 		foreach(k, ref v; this.Functions) {
-			if(threshold == 0 || this.timeOf(k) > threshold) {
+			if(threshold == 0 || this.percOf(k) > threshold) {
 				func[k] = [];
 				foreach(key, unused; v.CallsTo) {
-					if(threshold != 0 && this.timeOf(key) <= threshold)
+					if(threshold != 0 && this.percOf(key) <= threshold)
 						continue;
 					if(key !in func)
 						func[key] = [];
@@ -193,17 +197,17 @@ struct Profile {
 			s(fmt.format(
 				this.Functions[k].Mangled.tr("\"", "\\\""),
 				this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
-				this.percOf(k, mainTime),
-				this.functionPercOf(k, mainTime),
-				clr(this.percOf(k, mainTime))));
+				this.percOf(k),
+				this.functionPercOf(k),
+				clr(this.percOf(k))));
 			foreach(i; v) {
 				if(i !in func) {
 					s(fmt.format(
 						this.Functions[i].Mangled.tr("\"", "\\\""),
 						this.Functions[i].Name.tr("\"", "\\\"").wrap(40),
-						this.percOf(i, mainTime),
-						this.functionPercOf(i, mainTime),
-						clr(this.percOf(i, mainTime))));
+						this.percOf(i),
+						this.functionPercOf(i),
+						clr(this.percOf(i))));
 				}
 				s("\"%s\" -> \"%s\" [label=\"%dx\"];\n".format(
 					this.Functions[k].Mangled.tr("\"", "\\\""),
@@ -215,13 +219,13 @@ struct Profile {
 	}
 }
 
-struct FunctionElement {
+private struct FunctionElement {
 	char[] Name;
 	char[] Mangled;
 	ulong Calls;
 }
 
-struct Function {
+private struct Function {
 	char[] Name;
 	char[] Mangled;
 	ulong Calls;
