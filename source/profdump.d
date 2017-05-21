@@ -123,11 +123,45 @@ struct Profile {
 	const JSONValue toJSON(in float threshold = 0) {
 		JSONValue[] ret;
 		foreach(k, ref v; this.Functions) {
-			if(threshold != 0 && this.timeOf(k) < threshold)
+			if(threshold != 0 && this.percOf(k) < threshold)
 				continue;
 
-			ret ~= v.toJSON(this.TicksPerSecond);
+			JSONValue func = JSONValue([
+				"name": v.Name,
+				"mangled": v.Mangled
+			]);
+			if(v.CallsTo) {
+				JSONValue[] temp;
+				foreach(kk, vv; v.CallsTo) {
+					temp ~= JSONValue([
+						"name": JSONValue(vv.Name),
+						"mangled": JSONValue(vv.Mangled),
+						"calls": JSONValue(vv.Calls)
+					]);
+				}
+				func["callsTo"] = JSONValue(temp);
+			}
+			if(v.CalledBy) {
+				JSONValue[] temp;
+				foreach(k, vv; v.CalledBy) {
+					temp ~= JSONValue([
+						"name": JSONValue(vv.Name),
+						"mangled": JSONValue(vv.Mangled),
+						"calls": JSONValue(vv.Calls)
+					]);
+				}
+				func["calledBy"] = JSONValue(temp);
+			}
+			func["functionTimeSec"] = JSONValue(this.functionTimeOf(k));
+			func["timeSec"] = JSONValue(this.timeOf(k));
+			func["functionTime"] = JSONValue(v.FunctionTime);
+			func["time"] = JSONValue(v.Time);
+			func["functionPerc"] = JSONValue(this.functionPercOf(k));
+			func["perc"] = JSONValue(this.percOf(k));
+
+			ret ~= func;
 		}
+
 		return JSONValue([
 			"tps" : JSONValue(this.TicksPerSecond),
 			"functions" : JSONValue(ret)]);
@@ -261,43 +295,5 @@ private struct Function {
 		import std.digest.crc : crc32Of;
 		HASH h = func.Mangled.crc32Of;
 		this.CalledBy[h] = func;
-	}
-
-	const JSONValue toJSON(ulong tps = 0) {
-		JSONValue ret = JSONValue([
-			"name": this.Name,
-			"mangled": this.Mangled
-		]);
-		if(this.CallsTo) {
-			JSONValue[] temp;
-			foreach(k, v; this.CallsTo) {
-				temp ~= JSONValue([
-					"name": JSONValue(v.Name),
-					"mangled": JSONValue(v.Mangled),
-					"calls": JSONValue(v.Calls)
-				]);
-			}
-			ret["callsTo"] = JSONValue(temp);
-		}
-		if(this.CalledBy) {
-			JSONValue[] temp;
-			foreach(k, v; this.CalledBy) {
-				temp ~= JSONValue([
-					"name": JSONValue(v.Name),
-					"mangled": JSONValue(v.Mangled),
-					"calls": JSONValue(v.Calls)
-				]);
-			}
-			ret["calledBy"] = JSONValue(temp);
-		}
-		if(tps) {
-			ret["functionTimeSec"] = JSONValue(
-				cast(float) this.FunctionTime / cast(float) tps);
-			ret["timeSec"] = JSONValue(
-				cast(float) this.Time / cast(float) tps);
-		}
-		ret["functionTime"] = JSONValue(this.FunctionTime);
-		ret["time"] = JSONValue(this.Time);
-		return ret;
 	}
 }
