@@ -3,18 +3,23 @@ module profdump;
 import std.stdio : File;
 import std.string : indexOfAny, indexOfNeither;
 import std.conv : to;
-import std.regex : regex, matchFirst;
+import std.regex : regex, matchFirst, replaceAll;
 import std.json : JSONValue;
-import std.experimental.logger;
 
 alias HASH = ubyte[4];
 
-private char[] demangle(const(char)[] buf) {
+private char[] demangle(const(char)[] buf, bool verbose = false) {
 	static import core.demangle;
 	if(buf == "_Dmain".dup) {
 		return "void main()".dup;
 	} else {
-		return core.demangle.demangle(buf);
+		if(verbose) {
+			return core.demangle.demangle(buf);
+		} else {
+			return core.demangle.demangle(buf)
+				.replaceAll(regex(r"(?:@\w+\s|pure\s|nothrow\s)", "g"), "")
+				.replaceAll(regex(r"\([ ,*A-Za-z0-9\(\)!\[\]@]+\)", "g"), "(..)");
+		}
 	}
 }
 
@@ -22,7 +27,7 @@ struct Profile {
 	Function[HASH] Functions;
 	ulong TicksPerSecond;
 
-	this(ref File f) {
+	this(ref File f, bool verbose = false) {
 		import std.digest.crc : crc32Of;
 
 		Function temp;
@@ -50,12 +55,12 @@ struct Profile {
 				assert(!cap.empty);
 				if(newEntry) {
 					temp.calledBy(FunctionElement(
-						cap[2].demangle.dup,
+						cap[2].demangle(verbose).dup,
 						cap[2].dup,
 						cap[1].to!ulong));
 				} else {
 					temp.callsTo(FunctionElement(
-						cap[2].demangle.dup,
+						cap[2].demangle(verbose).dup,
 						cap[2].dup,
 						cap[1].to!ulong));
 				}
@@ -64,7 +69,7 @@ struct Profile {
 					regex(r"(\w+)\t\s*-?(\d+)\t\s*-?(\d+)\t\s*-?(\d+)"));
 				assert(!cap.empty);
 				newEntry = false;
-				temp.Name = cap[1].demangle.dup;
+				temp.Name = cap[1].demangle(verbose).dup;
 				temp.Mangled = cap[1].dup;
 				temp.Calls = cap[2].to!ulong;
 				temp.FunctionTime = cap[4].to!ulong;
@@ -111,12 +116,28 @@ struct Profile {
 			cast(float) this.TicksPerSecond;
 	}
 
+	@safe pure nothrow const float percOf(HASH f, float mainTime)
+	in {
+		assert(f in this.Functions);
+	} body {
+		return (cast(float) this.Functions[f].Time /
+			cast(float) this.TicksPerSecond) / mainTime * 100;
+	}
+
 	@safe pure nothrow const float functionTimeOf(HASH f)
 	in {
 		assert(f in this.Functions);
 	} body {
 		return cast(float) this.Functions[f].FunctionTime /
 			cast(float) this.TicksPerSecond;
+	}
+
+	@safe pure nothrow const float functionPercOf(HASH f, float mainTime)
+	in {
+		assert(f in this.Functions);
+	} body {
+		return (cast(float) this.Functions[f].FunctionTime /
+			cast(float) this.TicksPerSecond) / mainTime * 100;
 	}
 
 	const void toDOT(scope void delegate(const(char)[]) s,
@@ -172,21 +193,21 @@ struct Profile {
 			s(fmt.format(
 				this.Functions[k].Mangled.tr("\"", "\\\""),
 				this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
-				this.timeOf(k) / mainTime * 100,
-				this.functionTimeOf(k) / mainTime * 100,
+				this.percOf(k, mainTime),
+				this.functionPercOf(k, mainTime),
 				this.timeOf(k),
 				this.functionTimeOf(k),
-				clr(this.timeOf(k) / mainTime * 100)));
+				clr(this.percOf(k, mainTime))));
 			foreach(i; v) {
 				if(i !in func) {
 					s(fmt.format(
 						this.Functions[i].Mangled.tr("\"", "\\\""),
 						this.Functions[i].Name.tr("\"", "\\\"").wrap(40),
-						this.timeOf(i) / mainTime * 100,
-						this.functionTimeOf(i) / mainTime * 100,
+						this.percOf(i, mainTime),
+						this.functionPercOf(i, mainTime),
 						this.timeOf(i),
 						this.functionTimeOf(i),
-						clr(this.timeOf(i) / mainTime * 100)));
+						clr(this.percOf(i, mainTime))));
 				}
 				s("\"%s\" -> \"%s\" [label=\"%dx\"];\n".format(
 					this.Functions[k].Mangled.tr("\"", "\\\""),

@@ -10,6 +10,7 @@ int main(string[] args) {
 	File output = stdout;
 	bool pretty = true;
 	bool force = false;
+	bool verbose = false;
 	float threshold = 0.0;
 	enum TARGET : ubyte {
 		nul,
@@ -48,13 +49,14 @@ int main(string[] args) {
 		"pretty", "output pretty JSON (default: true)", &pretty,
 		"colour", "customize colours of dot graph nodes (default: %s)"
 			.format(colourDefault), &colour,
-		"force|f", "overwrite output file if exists", &force
+		"force|f", "overwrite output file if exists", &force,
+		"verbose|v", "do not minimize function names", &verbose
 	);
 
 	if(colour.length == 0)
 		colour = colourDefault;
 
-	if(result.helpWanted) {
+	if(result.helpWanted || target == TARGET.nul) {
 		return help(result);
 	}
 
@@ -91,7 +93,7 @@ int main(string[] args) {
 		}
 	}
 
-	auto prof = Profile(input);
+	auto prof = Profile(input, verbose);
 
 	auto writer = (const(char)[] s) {
 		output.write(s);
