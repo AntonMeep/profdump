@@ -44,7 +44,7 @@ int main(string[] args) {
 		"json|j", "output JSON", &setTarget,
 		"plain|p", "output plain text", &setTarget,
 		"dot|d", "output dot graph", &setTarget,
-		"threshold|t", "(seconds) hide functions below this threshold (default: %1.1f)"
+		"threshold|t", "(%% of main function) hide functions below this threshold (default: %1.1f)"
 			.format(threshold), &threshold,
 		"pretty", "output pretty JSON (default: true)", &pretty,
 		"colour", "customize colours of dot graph nodes (default: %s)"

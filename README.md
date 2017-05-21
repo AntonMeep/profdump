@@ -25,10 +25,11 @@ Options:
 -j      --json output JSON
 -p     --plain output plain text
 -d       --dot output dot graph
--t --threshold (seconds) hide functions below this threshold (default: 0.0)
+-t --threshold (% of main function) hide functions below this threshold (default: 0.0)
       --pretty output pretty JSON (default: true)
       --colour customize colours of dot graph nodes (default: [0:"limegreen", 10:"slateblue", 50:"royalblue", 95:"red", 25:"steelblue", 75:"navy"])
 -f     --force overwrite output file if exists
+-v   --verbose do not minimize function names
 -h      --help This help information.
 ```
 
@@ -38,7 +39,6 @@ Every node represents a function and has the following layout:
 +----------------------------+
 |        Function name       |
 | total time % (self time %) |
-| total time s (self time s) |
 +----------------------------+
 ```
 
@@ -61,6 +61,8 @@ Has the following layout:
 			"timeSec": <float>, // Time spent on this function and all its children in seconds
 			"functionTime": <integer>, // Time spent on this function in ticks
 			"functionTimeSec": <float>, // Time spent on this function in seconds
+			"perc": <float>, // Time spent on this function and all its children in % of main function time
+			"functionPerc": <float>, // Time spent on this function in % of main function time
 			"callsTo": [ // All children which are called by this function
 				{
 					"name": <string>, // Demangled name of children
@@ -87,3 +89,45 @@ Has the following layout:
 
 ## Plain text output
 Should be easy to understand
+### Example of plain text output:
+```
+Function 'int example.child1(..)':
+	Mangled name: '_D7example6child1FiZi'
+	Called by:
+		int example.child2(..)	2 times
+		void main()	1 times
+	Took: 0.000015 seconds (0.118131%)
+	Finished in: 0.000015 seconds (0.118131%)
+Function 'ulong example.fib(..)':
+	Mangled name: '_D7example3fibFmZm'
+	Calls:
+		ulong example.fib(..)	266 times
+	Called by:
+		ulong example.fib(..)	266 times
+		void main()	10 times
+	Took: 0.011525 seconds (90.252014%)
+	Finished in: 0.011525 seconds (90.252014%)
+Function 'int example.sum(..)':
+	Mangled name: '_D7example3sumFiiZi'
+	Called by:
+		void main()	10 times
+	Took: 0.000003 seconds (0.026251%)
+	Finished in: 0.000003 seconds (0.026251%)
+Function 'int example.child2(..)':
+	Mangled name: '_D7example6child2FiZi'
+	Calls:
+		int example.child1(..)	2 times
+	Called by:
+		void main()	1 times
+	Took: 0.000107 seconds (0.835667%)
+	Finished in: 0.000117 seconds (0.914421%)
+Function 'void main()':
+	Mangled name: '_Dmain'
+	Calls:
+		int example.child1(..)	1 times
+		ulong example.fib(..)	10 times
+		int example.sum(..)	10 times
+		int example.child2(..)	1 times
+	Took: 0.001120 seconds (8.767939%)
+	Finished in: 0.012770 seconds (100.000000%)
+```
