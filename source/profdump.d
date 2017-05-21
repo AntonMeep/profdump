@@ -170,7 +170,7 @@ struct Profile {
 		assert(main in this.Functions);
 
 		const float mainTime = this.timeOf(main);
-		enum fmt = "\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\\n%fs(%fs)\", shape=\"box\"," ~
+		enum fmt = "\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\", shape=\"box\"," ~
 			" style=filled, fillcolor=\"%s\"];\n";
 
 		foreach(k, ref v; this.Functions) {
@@ -195,8 +195,6 @@ struct Profile {
 				this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
 				this.percOf(k, mainTime),
 				this.functionPercOf(k, mainTime),
-				this.timeOf(k),
-				this.functionTimeOf(k),
 				clr(this.percOf(k, mainTime))));
 			foreach(i; v) {
 				if(i !in func) {
@@ -205,8 +203,6 @@ struct Profile {
 						this.Functions[i].Name.tr("\"", "\\\"").wrap(40),
 						this.percOf(i, mainTime),
 						this.functionPercOf(i, mainTime),
-						this.timeOf(i),
-						this.functionTimeOf(i),
 						clr(this.percOf(i, mainTime))));
 				}
 				s("\"%s\" -> \"%s\" [label=\"%dx\"];\n".format(
