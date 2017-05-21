@@ -1,0 +1,18 @@
+digraph {
+"_D7example6child1FiZi" [label="int example.child1(..)
+\n0.12%(0.12%)", shape="box", style=filled, fillcolor="limegreen"];
+"_D7example3fibFmZm" [label="ulong example.fib(..)
+\n90.25%(90.25%)", shape="box", style=filled, fillcolor="navy"];
+"_D7example3fibFmZm" -> "_D7example3fibFmZm" [label="266x"];
+"_D7example3sumFiiZi" [label="int example.sum(..)
+\n0.03%(0.03%)", shape="box", style=filled, fillcolor="limegreen"];
+"_D7example6child2FiZi" [label="int example.child2(..)
+\n0.91%(0.84%)", shape="box", style=filled, fillcolor="limegreen"];
+"_D7example6child2FiZi" -> "_D7example6child1FiZi" [label="2x"];
+"_Dmain" [label="void main()
+\n100.00%(8.77%)", shape="box", style=filled, fillcolor="red"];
+"_Dmain" -> "_D7example6child1FiZi" [label="1x"];
+"_Dmain" -> "_D7example3fibFmZm" [label="10x"];
+"_Dmain" -> "_D7example3sumFiiZi" [label="10x"];
+"_Dmain" -> "_D7example6child2FiZi" [label="1x"];
+}

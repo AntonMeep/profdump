@@ -1,0 +1,129 @@
+{
+    "functions": [
+        {
+            "calledBy": [
+                {
+                    "calls": 2,
+                    "mangled": "_D7example6child2FiZi",
+                    "name": "int example.child2(..)"
+                },
+                {
+                    "calls": 1,
+                    "mangled": "_Dmain",
+                    "name": "void main()"
+                }
+            ],
+            "functionPerc": 0.118130899965763092,
+            "functionTime": 54,
+            "functionTimeSec": 1.50857158587314188e-05,
+            "mangled": "_D7example6child1FiZi",
+            "name": "int example.child1(..)",
+            "perc": 0.118130899965763092,
+            "time": 54,
+            "timeSec": 1.50857158587314188e-05
+        },
+        {
+            "calledBy": [
+                {
+                    "calls": 266,
+                    "mangled": "_D7example3fibFmZm",
+                    "name": "ulong example.fib(..)"
+                },
+                {
+                    "calls": 10,
+                    "mangled": "_Dmain",
+                    "name": "void main()"
+                }
+            ],
+            "callsTo": [
+                {
+                    "calls": 266,
+                    "mangled": "_D7example3fibFmZm",
+                    "name": "ulong example.fib(..)"
+                }
+            ],
+            "functionPerc": 90.25201416015625,
+            "functionTime": 41256,
+            "functionTimeSec": 0.0115254875272512436,
+            "mangled": "_D7example3fibFmZm",
+            "name": "ulong example.fib(..)",
+            "perc": 90.25201416015625,
+            "time": 41256,
+            "timeSec": 0.0115254875272512436
+        },
+        {
+            "calledBy": [
+                {
+                    "calls": 10,
+                    "mangled": "_Dmain",
+                    "name": "void main()"
+                }
+            ],
+            "functionPerc": 0.0262513123452663422,
+            "functionTime": 12,
+            "functionTimeSec": 3.35238132720405702e-06,
+            "mangled": "_D7example3sumFiiZi",
+            "name": "int example.sum(..)",
+            "perc": 0.0262513123452663422,
+            "time": 12,
+            "timeSec": 3.35238132720405702e-06
+        },
+        {
+            "calledBy": [
+                {
+                    "calls": 1,
+                    "mangled": "_Dmain",
+                    "name": "void main()"
+                }
+            ],
+            "callsTo": [
+                {
+                    "calls": 2,
+                    "mangled": "_D7example6child1FiZi",
+                    "name": "int example.child1(..)"
+                }
+            ],
+            "functionPerc": 0.835666775703430176,
+            "functionTime": 382,
+            "functionTimeSec": 0.000106717474409379065,
+            "mangled": "_D7example6child2FiZi",
+            "name": "int example.child2(..)",
+            "perc": 0.914420723915100098,
+            "time": 418,
+            "timeSec": 0.000116774615889880806
+        },
+        {
+            "callsTo": [
+                {
+                    "calls": 1,
+                    "mangled": "_D7example6child1FiZi",
+                    "name": "int example.child1(..)"
+                },
+                {
+                    "calls": 10,
+                    "mangled": "_D7example3fibFmZm",
+                    "name": "ulong example.fib(..)"
+                },
+                {
+                    "calls": 10,
+                    "mangled": "_D7example3sumFiiZi",
+                    "name": "int example.sum(..)"
+                },
+                {
+                    "calls": 1,
+                    "mangled": "_D7example6child2FiZi",
+                    "name": "int example.child2(..)"
+                }
+            ],
+            "functionPerc": 8.76793861389160156,
+            "functionTime": 4008,
+            "functionTimeSec": 0.00111969537101686001,
+            "mangled": "_Dmain",
+            "name": "void main()",
+            "perc": 100,
+            "time": 45712,
+            "timeSec": 0.0127703379839658737
+        }
+    ],
+    "tps": 3579545
+}
