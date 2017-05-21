@@ -3,7 +3,7 @@
 	"authors": [
 		"Anton Fediushin"
 	],
-	"description": "Processes profiling output",
+	"description": "Converts profiler output to DOT graph, JSON or human-readable plain text",
 	"copyright": "Copyright © 2017, Anton Fediusin",
 	"license": "MIT"
 }
