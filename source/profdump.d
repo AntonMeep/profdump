@@ -78,7 +78,6 @@ struct Profile {
 			}
 		}
 
-		
 		const HASH main = "_Dmain".crc32Of;
 		if(main !in this.Functions)
 			throw new Exception("Your trace.log is invalid");
@@ -87,8 +86,26 @@ struct Profile {
 	}
 
 	const void toString(scope void delegate(const(char)[]) s, in float threshold = 0) {
-		foreach(ref f; this.Functions) {
-			f.toString(s, this.TicksPerSecond, threshold);
+		import std.format : format;
+		foreach(k, ref v; this.Functions) {
+			if(threshold != 0 && this.percOf(k) < threshold)
+				continue;
+			s("Function '%s':\n".format(v.Name));
+			s("\tMangled name: '%s'\n".format(v.Mangled));
+			if(v.CallsTo) {
+				s("\tCalls:\n");
+				foreach(ke, va; v.CallsTo)
+					s("\t\t%s\t%d times\n".format(va.Name, va.Calls));
+			}
+			if(v.CalledBy) {
+				s("\tCalled by:\n");
+				foreach(ke, va; v.CalledBy)
+					s("\t\t%s\t%d times\n".format(va.Name, va.Calls));
+			}
+			s("\tTook: %f seconds (%f%%)\n"
+				.format(this.functionTimeOf(k), this.functionPercOf(k)));
+			s("\tFinished in: %f seconds (%f%%)\n"
+				.format(this.timeOf(k), this.percOf(k)));
 		}
 	}
 
@@ -244,34 +261,6 @@ private struct Function {
 		import std.digest.crc : crc32Of;
 		HASH h = func.Mangled.crc32Of;
 		this.CalledBy[h] = func;
-	}
-
-	const void toString(scope void delegate(const(char)[]) s, ulong tps = 0, float threshold = 0) {
-		import std.format : format;
-		if(threshold != 0 && (cast(float) this.Time / cast(float) tps) < threshold)
-			return;
-		s("Function '%s':\n".format(this.Name));
-		s("\tMangled name: '%s'\n".format(this.Mangled));
-		if(this.CallsTo) {
-			s("\tCalls:\n");
-			foreach(k, v; this.CallsTo)
-				s("\t\t%s\t%d times\n".format(v.Name, v.Calls));
-		}
-		if(this.CalledBy) {
-			s("\tCalled by:\n");
-			foreach(k, v; this.CalledBy)
-				s("\t\t%s\t%d times\n".format(v.Name, v.Calls));
-		}
-		if(tps) {
-			s("\tFinished in: %f seconds (just this function)\n"
-				.format(cast(float) this.FunctionTime / cast(float) tps));
-			s("\tFinished in: %f seconds (this function and all descendants)\n"
-				.format(cast(float) this.Time / cast(float) tps));
-		} else {
-			s("\tFinished in: %d ticks (just this function)\n".format(this.FunctionTime));
-			s("\tFinished in: %d ticks (this function and all descendants)\n"
-				.format(this.Time));
-		}
 	}
 
 	const JSONValue toJSON(ulong tps = 0) {
