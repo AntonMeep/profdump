@@ -111,6 +111,7 @@ int main(string[] args) {
 		case blame: {
 			import std.algorithm : sort;
 			import std.string : leftJustify;
+			import std.regex : regex, replaceAll;
 
 			HASH[float] funcs;
 			foreach(k, ref unused; prof.Functions) {
@@ -121,21 +122,27 @@ int main(string[] args) {
 			if(verbose) {
 				foreach(k; sort!"a > b"(funcs.keys))
 				output.writefln("%s\t%3.5fs %3.2f%%\t%3.5fs %3.2f%%",
-						prof.Functions[funcs[k]]
-							.Name
-							.leftJustify(40),
-						prof.timeOf(funcs[k]),
-						prof.percOf(funcs[k]),
-						prof.functionTimeOf(funcs[k]),
-						prof.functionPercOf(funcs[k]));
+					prof.Functions[funcs[k]]
+						.Name
+						.leftJustify(40),
+					prof.timeOf(funcs[k]),
+					prof.percOf(funcs[k]),
+					prof.functionTimeOf(funcs[k]),
+					prof.functionPercOf(funcs[k]));
 			} else {
 				foreach(k; sort!"a > b"(funcs.keys))
 				output.writefln("%s\t%3.5fs %3.2f%%",
-						prof.Functions[funcs[k]]
-							.Name
-							.leftJustify(40),
-						prof.timeOf(funcs[k]),
-						prof.percOf(funcs[k]));
+					prof.Functions[funcs[k]]
+						.Name
+						.replaceAll(
+							regex(r"(?:@\w+\s|pure\s|nothrow\s)", "g"),
+								"")
+						.replaceAll(
+							regex(r"\([ ,*A-Za-z0-9\(\)!\[\]@]+\)", "g"),
+								"(..)")
+						.leftJustify(40),
+					prof.timeOf(funcs[k]),
+					prof.percOf(funcs[k]));
 			}
 			return 0;
 		}
