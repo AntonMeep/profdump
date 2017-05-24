@@ -5,6 +5,7 @@ import std.string : indexOfAny, indexOfNeither;
 import std.conv : to;
 import std.regex : regex, matchFirst, replaceAll;
 import std.json : JSONValue;
+import std.exception : enforce;
 
 alias HASH = ubyte[4];
 
@@ -46,14 +47,16 @@ struct Profile {
 				if(temp.Name.length != 0)
 					this.Functions[temp.Mangled.crc32Of] = temp;
 				auto i = line.indexOfAny("0123456789");
-				assert(i > 0);
+				enforce(i > 0,
+					"Your trace.log file is invalid");
 				auto s = line[i..$].indexOfNeither("0123456789");
 				this.TicksPerSecond = line[i..i + s].to!ulong;
 				break;
 			} else if(line[0] == '\t') {
 				auto cap = line.matchFirst(
 					regex(r"\t\s*(\d+)\t\s*(\w+)"));
-				assert(!cap.empty);
+				enforce(!cap.empty,
+					"Your trace.log file is invalid");
 				if(newEntry) {
 					temp.calledBy(FunctionElement(
 						cap[2].demangle(verbose).dup,
@@ -79,8 +82,8 @@ struct Profile {
 		}
 
 		const HASH main = "_Dmain".crc32Of;
-		if(main !in this.Functions)
-			throw new Exception("Your trace.log is invalid");
+		enforce(main in this.Functions,
+			"Your trace.log file is invalid");
 
 		this.TimeOfMain = this.timeOf(main);
 	}
