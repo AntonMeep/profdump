@@ -23,7 +23,7 @@ You can set input and output file to stdin/stdout by passing '-' instead of file
 
 Options:
 -j      --json output JSON
--p     --plain output plain text
+-p     --plain output plain text (default)
 -d       --dot output dot graph
 -t --threshold (% of main function) hide functions below this threshold (default: 0.0)
       --pretty output pretty JSON (default: true)
