@@ -88,7 +88,35 @@ struct Profile {
 		this.TimeOfMain = this.timeOf(main);
 	}
 
-	const void toString(scope void delegate(const(char)[]) s, in float threshold = 0) {
+	const void writeString(ref File f, in float threshold = 0) {
+		foreach(k, ref v; this.Functions) {
+			if(threshold != 0 && this.percOf(k) < threshold)
+				continue;
+			f.writefln("Function '%s':\n"~
+				"\tMangled name: '%s'",
+					v.Name,
+					v.Mangled);
+
+			if(v.CallsTo) {
+				f.writeln("\tCalls:");
+				foreach(ke, va; v.CallsTo)
+					f.writefln("\t\t%s\t%d times", va.Name, va.Calls);
+			}
+			if(v.CalledBy) {
+				f.writeln("\tCalled by:");
+				foreach(ke, va; v.CalledBy)
+					f.writefln("\t\t%s\t%d times", va.Name, va.Calls);
+			}
+			f.writefln("\tTook: %f seconds (%f%%)\n"~
+				"\tFinished in: %f seconds (%f%%)",
+					this.functionTimeOf(k),
+					this.functionPercOf(k),
+					this.timeOf(k),
+					this.percOf(k));
+		}
+	}
+
+	deprecated const void toString(scope void delegate(const(char)[]) s, in float threshold = 0) {
 		import std.format : format;
 		foreach(k, ref v; this.Functions) {
 			if(threshold != 0 && this.percOf(k) < threshold)

@@ -104,7 +104,7 @@ int main(string[] args) {
 			prof.toJSONString(writer, threshold, pretty);
 			return 0;
 		case plain: case nul:
-			prof.toString(writer, threshold);
+			prof.writeString(output, threshold);
 			return 0;
 		case dot:
 			prof.toDOT(writer, threshold, colour);
