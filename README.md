@@ -22,11 +22,12 @@ If input file is not specified, looks for 'trace.log' file.
 You can set input and output file to stdin/stdout by passing '-' instead of file name.
 
 Options:
--j      --json output JSON
--p     --plain output plain text (default)
+-p     --plain print detailed information about functions (default)
+-j      --json print JSON
 -d       --dot output dot graph
+-b     --blame print list of functions ordered by time
 -t --threshold (% of main function) hide functions below this threshold (default: 0.0)
-      --pretty output pretty JSON (default: true)
+      --pretty prettify JSON output (default: true)
       --colour customize colours of dot graph nodes (default: [0:"limegreen", 10:"slateblue", 50:"royalblue", 95:"red", 25:"steelblue", 75:"navy"])
 -f     --force overwrite output file if exists
 -v   --verbose do not minimize function names

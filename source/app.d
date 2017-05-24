@@ -49,7 +49,7 @@ int main(string[] args) {
 		"blame|b", "print list of functions ordered by time", &setTarget,
 		"threshold|t", "(%% of main function) hide functions below this threshold (default: %1.1f)"
 			.format(threshold), &threshold,
-		"pretty", "output pretty JSON (default: true)", &pretty,
+		"pretty", "prettify JSON output (default: true)", &pretty,
 		"colour", "customize colours of dot graph nodes (default: %s)"
 			.format(colourDefault), &colour,
 		"force|f", "overwrite output file if exists", &force,
