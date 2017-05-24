@@ -43,8 +43,8 @@ int main(string[] args) {
 	auto result = args.getopt(
 		std.getopt.config.stopOnFirstNonOption,
 		std.getopt.config.bundling,
-		"plain|p", "output plain text (default)", &setTarget,
-		"json|j", "output JSON", &setTarget,
+		"plain|p", "print detailed information about functions (default)", &setTarget,
+		"json|j", "print JSON", &setTarget,
 		"dot|d", "output dot graph", &setTarget,
 		"blame|b", "print list of functions ordered by time", &setTarget,
 		"threshold|t", "(%% of main function) hide functions below this threshold (default: %1.1f)"
@@ -110,18 +110,33 @@ int main(string[] args) {
 			return 0;
 		case blame: {
 			import std.algorithm : sort;
-			import std.string : leftJustify, wrap;
+			import std.string : leftJustify;
 
 			HASH[float] funcs;
-			foreach(k, ref unused; prof.Functions)
-				funcs[prof.functionPercOf(k)] = k;
-			foreach(k; sort!"a > b"(funcs.keys))
-				output.writefln("%s%3.5fs  %3.2f%%",
+			foreach(k, ref unused; prof.Functions) {
+				auto perc = prof.percOf(k);
+				if(threshold == 0 || perc >= threshold)
+					funcs[perc] = k;
+			}
+			if(verbose) {
+				foreach(k; sort!"a > b"(funcs.keys))
+				output.writefln("%s\t%3.5fs %3.2f%%\t%3.5fs %3.2f%%",
 						prof.Functions[funcs[k]]
 							.Name
 							.leftJustify(40),
+						prof.timeOf(funcs[k]),
+						prof.percOf(funcs[k]),
 						prof.functionTimeOf(funcs[k]),
 						prof.functionPercOf(funcs[k]));
+			} else {
+				foreach(k; sort!"a > b"(funcs.keys))
+				output.writefln("%s\t%3.5fs %3.2f%%",
+						prof.Functions[funcs[k]]
+							.Name
+							.leftJustify(40),
+						prof.timeOf(funcs[k]),
+						prof.percOf(funcs[k]));
+			}
 			return 0;
 		}
 	}
