@@ -95,10 +95,6 @@ int main(string[] args) {
 
 	auto prof = Profile(input, verbose);
 
-	auto writer = (const(char)[] s) {
-		output.write(s);
-	};
-
 	final switch(target) with (TARGET) {
 		case json:
 			prof.writeJSON(output, threshold, pretty);
@@ -107,7 +103,7 @@ int main(string[] args) {
 			prof.writeString(output, threshold);
 			return 0;
 		case dot:
-			prof.toDOT(writer, threshold, colour);
+			prof.writeDOT(output, threshold, colour);
 			return 0;
 	}
 }

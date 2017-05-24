@@ -236,6 +236,73 @@ struct Profile {
 			cast(float) this.TicksPerSecond) / TimeOfMain * 100;
 	}
 
+	const void writeDOT(ref File f,
+			in float threshold = 0,
+			in string[float] colours = [
+				0: "limegreen",
+				10: "slateblue",
+				25: "steelblue",
+				50: "royalblue",
+				75: "navy",
+				95: "red"
+			]
+		) {
+		import std.string : tr, wrap;
+		import std.digest.crc : crc32Of;
+
+		auto clr = (float f) {
+			import std.algorithm : sort;
+			foreach(k; sort!("a>b")(colours.keys))
+				if(k <= f)
+					return colours[k];
+			return "gray";
+		};
+
+		HASH[][HASH] func;
+		enum fmt = "\"%s\" [label=\"%s\\n%.2f%%(%.2f%%)\", shape=\"box\"," ~
+			" style=filled, fillcolor=\"%s\"];";
+
+		foreach(k, ref v; this.Functions) {
+			if(threshold == 0 || this.percOf(k) > threshold) {
+				func[k] = [];
+				foreach(key, unused; v.CallsTo) {
+					if(threshold != 0 && this.percOf(key) <= threshold)
+						continue;
+					if(key !in func)
+						func[key] = [];
+					func[k] ~= key;
+				}
+			} else {
+				continue;
+			}
+		}
+
+		f.writeln("digraph {");
+		foreach(k, ref v; func) {
+			f.writefln(fmt,
+				this.Functions[k].Mangled.tr("\"", "\\\""),
+				this.Functions[k].Name.tr("\"", "\\\"").wrap(40),
+				this.percOf(k),
+				this.functionPercOf(k),
+				clr(this.percOf(k)));
+			foreach(i; v) {
+				if(i !in func) {
+					f.writefln(fmt,
+						this.Functions[i].Mangled.tr("\"", "\\\""),
+						this.Functions[i].Name.tr("\"", "\\\"").wrap(40),
+						this.percOf(i),
+						this.functionPercOf(i),
+						clr(this.percOf(i)));
+				}
+				f.writefln("\"%s\" -> \"%s\" [label=\"%dx\"];",
+					this.Functions[k].Mangled.tr("\"", "\\\""),
+					this.Functions[i].Mangled.tr("\"", "\\\""),
+					this.Functions[k].CallsTo[i].Calls);
+			}
+		}
+		f.writeln("}");
+	}
+
 	const void toDOT(scope void delegate(const(char)[]) s,
 			float threshold = 0,
 			string[float] colours = [
