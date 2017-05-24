@@ -303,7 +303,7 @@ struct Profile {
 		f.writeln("}");
 	}
 
-	const void toDOT(scope void delegate(const(char)[]) s,
+	deprecated const void toDOT(scope void delegate(const(char)[]) s,
 			float threshold = 0,
 			string[float] colours = [
 				0: "limegreen",
