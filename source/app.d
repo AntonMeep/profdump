@@ -42,7 +42,7 @@ int main(string[] args) {
 		std.getopt.config.stopOnFirstNonOption,
 		std.getopt.config.bundling,
 		"json|j", "output JSON", &setTarget,
-		"plain|p", "output plain text", &setTarget,
+		"plain|p", "output plain text (default)", &setTarget,
 		"dot|d", "output dot graph", &setTarget,
 		"threshold|t", "(%% of main function) hide functions below this threshold (default: %1.1f)"
 			.format(threshold), &threshold,
@@ -56,7 +56,7 @@ int main(string[] args) {
 	if(colour.length == 0)
 		colour = colourDefault;
 
-	if(result.helpWanted || target == TARGET.nul) {
+	if(result.helpWanted) {
 		return help(result);
 	}
 
@@ -99,19 +99,16 @@ int main(string[] args) {
 		output.write(s);
 	};
 
-	switch(target) with (TARGET) {
+	final switch(target) with (TARGET) {
 		case json:
 			prof.toJSONString(writer, threshold, pretty);
 			return 0;
-		case plain:
+		case plain: case nul:
 			prof.toString(writer, threshold);
 			return 0;
 		case dot:
 			prof.toDOT(writer, threshold, colour);
 			return 0;
-		default:
-			stderr.writeln("Wrong target");
-			return help(result);
 	}
 }
 
