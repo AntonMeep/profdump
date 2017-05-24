@@ -140,7 +140,7 @@ struct Profile {
 		}
 	}
 
-	const void toJSONString(scope void delegate(const(char)[]) s,
+	deprecated const void toJSONString(scope void delegate(const(char)[]) s,
 		in float threshold = 0,
 		in bool pretty = false) {
 		if(pretty) {
@@ -149,6 +149,12 @@ struct Profile {
 		} else {
 			s(this.toJSON(threshold).toString);
 		}
+	}
+
+	const void writeJSON(ref File f, in float threshold = 0, in bool pretty = false) {
+		(pretty)
+			? f.writeln(this.toJSON(threshold).toPrettyString)
+			: f.write(this.toJSON(threshold).toString);
 	}
 
 	const JSONValue toJSON(in float threshold = 0) {

@@ -101,7 +101,7 @@ int main(string[] args) {
 
 	final switch(target) with (TARGET) {
 		case json:
-			prof.toJSONString(writer, threshold, pretty);
+			prof.writeJSON(output, threshold, pretty);
 			return 0;
 		case plain: case nul:
 			prof.writeString(output, threshold);
