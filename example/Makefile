@@ -6,12 +6,11 @@ PLAIN	:= $(addprefix $(SAMPLEDIR), $(SOURCES:.log=.txt))
 JSON	:= $(addprefix $(SAMPLEDIR), $(SOURCES:.log=.json))
 DOT	:= $(addprefix $(SAMPLEDIR), $(SOURCES:.log=.dot))
 SVG	:= $(addprefix $(SAMPLEDIR), $(SOURCES:.log=.svg))
-PNG	:= $(addprefix $(SAMPLEDIR), $(SOURCES:.log=.png))
 
 
-.PHONY: dot svg png plain json
+.PHONY: dot svg plain json
 
-all: $(PROFDUMP) plain json dot png svg
+all: $(PROFDUMP) plain json dot svg
 
 plain: $(SAMPLEDIR) $(PLAIN)
 $(SAMPLEDIR)%.txt	: %.log $(SAMPLEDIR) $(PROFDUMP)
@@ -32,12 +31,6 @@ svg: $(SAMPLEDIR) $(SVG)
 $(SAMPLEDIR)%.svg	: $(SAMPLEDIR)%.dot
 	@echo Converting $< to $@
 	@dot -Tsvg $< -o$@
-
-png: $(SAMPLEDIR) $(PNG)
-$(SAMPLEDIR)%.png	: $(SAMPLEDIR)%.dot
-	@echo Converting $< to $@
-	@dot -Tpng $< -o$@
-
 
 $(SAMPLEDIR)	:
 	@mkdir $(SAMPLEDIR)

@@ -12,7 +12,7 @@ profdump can convert it to:
 - [json](./example/sample/simple.json)
 
 or just draw this beautiful graph:
-![simple graph](./example/sample/simple.png?raw=true)
+![simple graph](./example/example.png?raw=true)
 
 ## Usage
 ```
