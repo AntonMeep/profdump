@@ -2,7 +2,6 @@ import std.stdio;
 import std.getopt;
 import std.file : exists;
 import std.format : format;
-
 import profdump;
 
 int main(string[] args) {
@@ -16,7 +15,8 @@ int main(string[] args) {
 		nul,
 		json,
 		plain,
-		dot
+		dot,
+		blame
 	}
 	TARGET target = TARGET.nul;
 	string[float] colour;
@@ -36,14 +36,17 @@ int main(string[] args) {
 			target = TARGET.plain;
 		} else if(option == "dot|d") {
 			target = TARGET.dot;
+		} else if(option == "blame|b") {
+			target = TARGET.blame;
 		}
 	}
 	auto result = args.getopt(
 		std.getopt.config.stopOnFirstNonOption,
 		std.getopt.config.bundling,
-		"json|j", "output JSON", &setTarget,
 		"plain|p", "output plain text (default)", &setTarget,
+		"json|j", "output JSON", &setTarget,
 		"dot|d", "output dot graph", &setTarget,
+		"blame|b", "print list of functions ordered by time", &setTarget,
 		"threshold|t", "(%% of main function) hide functions below this threshold (default: %1.1f)"
 			.format(threshold), &threshold,
 		"pretty", "output pretty JSON (default: true)", &pretty,
@@ -105,6 +108,22 @@ int main(string[] args) {
 		case dot:
 			prof.writeDOT(output, threshold, colour);
 			return 0;
+		case blame: {
+			import std.algorithm : sort;
+			import std.string : leftJustify, wrap;
+
+			HASH[float] funcs;
+			foreach(k, ref unused; prof.Functions)
+				funcs[prof.functionPercOf(k)] = k;
+			foreach(k; sort!"a > b"(funcs.keys))
+				output.writefln("%s%3.5fs  %3.2f%%",
+						prof.Functions[funcs[k]]
+							.Name
+							.leftJustify(40),
+						prof.functionTimeOf(funcs[k]),
+						prof.functionPercOf(funcs[k]));
+			return 0;
+		}
 	}
 }
 
