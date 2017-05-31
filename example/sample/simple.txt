@@ -2,7 +2,7 @@ Function 'int example.child1(..)':
 	Mangled name: '_D7example6child1FiZi'
 	Called by:
 		int example.child2(..)	2 times
-		void main()	1 times
+		void main()	1 time
 	Took: 0.000015 seconds (0.118131%)
 	Finished in: 0.000015 seconds (0.118131%)
 Function 'ulong example.fib(..)':
@@ -25,15 +25,15 @@ Function 'int example.child2(..)':
 	Calls:
 		int example.child1(..)	2 times
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.000107 seconds (0.835667%)
 	Finished in: 0.000117 seconds (0.914421%)
 Function 'void main()':
 	Mangled name: '_Dmain'
 	Calls:
-		int example.child1(..)	1 times
+		int example.child1(..)	1 time
 		ulong example.fib(..)	10 times
 		int example.sum(..)	10 times
-		int example.child2(..)	1 times
+		int example.child2(..)	1 time
 	Took: 0.001120 seconds (8.767939%)
 	Finished in: 0.012770 seconds (100.000000%)

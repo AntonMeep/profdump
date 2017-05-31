@@ -7,34 +7,34 @@ Function 'bool std.functional.safeOp!("<").safeOp!(..).safeOp(..)':
 Function 'ubyte[4] std.digest.digest.digest!(std.digest.crc.CRC32, immutable(..).digest(..)':
 	Mangled name: '_D3std6digest6digest38__T6digestTS3std6digest3crc5CRC32TAyaZ6digestFNaNbNiNfMxAyaZG4h'
 	Called by:
-		const(..) profdump.Profile.toDOT	1 times
+		const(..) profdump.Profile.toDOT	1 time
 	Took: 0.000164 seconds (0.003844%)
 	Finished in: 0.000164 seconds (0.003844%)
 Function 'float std.conv.toImpl!(..).toImpl(..)':
 	Mangled name: '_D3std4conv17__T6toImplTfTAyaZ6toImplFNaNfAyaZf'
 	Calls:
-		float std.conv.parse!(..).parse(..)	1 times
+		float std.conv.parse!(..).parse(..)	1 time
 	Called by:
-		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 times
+		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 time
 	Took: 0.000841 seconds (0.019678%)
 	Finished in: 0.001596 seconds (0.037343%)
 Function 'ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)':
 	Mangled name: '_D8profdump7Profile6__ctorMFNcKS3std5stdio4FileZS8profdump7Profile'
 	Calls:
 		ubyte[4] std.digest.digest.digest!(std.digest.crc.CRC32, char[]).digest(..)	17 times
-		void std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted.__dtor()	1 times
-		long std.string.indexOfAnyNeitherImpl!(..).indexOfAnyNeitherImpl(..)[], const(std.typecons.Flag!("caseSensitive").Flag))	1 times
+		void std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted.__dtor()	1 time
+		long std.string.indexOfAnyNeitherImpl!(..).indexOfAnyNeitherImpl(..)[], const(std.typecons.Flag!("caseSensitive").Flag))	1 time
 		std.regex.internal.ir.Regex!(..).Regex std.regex.regex!(..).regex(..)	17 times
-		std.stdio.File.ByLine!(..).ByLine std.stdio.File.byLine!(..).byLine(std.typecons.Flag!("keepTerminator").Flag, char)	1 times
+		std.stdio.File.ByLine!(..).ByLine std.stdio.File.byLine!(..).byLine(std.typecons.Flag!("keepTerminator").Flag, char)	1 time
 		std.regex.Captures!(..).Captures std.regex.__T9matchOnceS453std5regex8internal8thompson15ThompsonMatcherTS3std5regex8internal2ir12__T5RegexTaZ5RegexTAaZ.matchOnce(char[], std.regex.internal.ir.Regex!(..).Regex)	17 times
 		ulong std.stdio.File.readln!(..).readln(..)	23 times
 		uint std.utf.strideBack!(..).strideBack(..)	23 times
-		long std.string.indexOfAnyNeitherImpl!(..).indexOfAnyNeitherImpl(..)[], const(std.typecons.Flag!("caseSensitive").Flag))	1 times
+		long std.string.indexOfAnyNeitherImpl!(..).indexOfAnyNeitherImpl(..)[], const(std.typecons.Flag!("caseSensitive").Flag))	1 time
 		char[] object._dup!(..)._dup(..)	56 times
 		ulong std.conv.toImpl!(..).toImpl(..)	28 times
 		dchar std.utf.decode!(..).decode(..)	23 times
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.177643 seconds (4.157144%)
 	Finished in: 3.507266 seconds (82.076050%)
 Function 'const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender, char, const(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda16!(..).__lambda16(..)':
@@ -66,7 +66,7 @@ Function 'std.uni.InversionList!(std.uni.GcPolicy).InversionList std.uni.unicode
 	Calls:
 		bool std.uni.loadProperty!(std.uni.InversionList!(std.uni.GcPolicy).InversionList, char).loadProperty(..), ref std.uni.InversionList!(std.uni.GcPolicy).InversionList)	19 times
 	Called by:
-		std.uni.InversionList!(std.uni.GcPolicy).InversionList std.uni.unicode.opDispatch!("Nd").opDispatch()	1 times
+		std.uni.InversionList!(std.uni.GcPolicy).InversionList std.uni.unicode.opDispatch!("Nd").opDispatch()	1 time
 		void std.regex.internal.parser.Parser!(..)[], std.regex.internal.parser.CodeGen).Parser.parseEscape()	18 times
 	Took: 0.008256 seconds (0.193213%)
 	Finished in: 0.533581 seconds (12.486717%)
@@ -85,20 +85,20 @@ Function 'void std.regex.internal.parser.Parser!(..)[], std.regex.internal.parse
 Function 'bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)':
 	Mangled name: '_D3std6getopt21__T12handleOptionTPbZ12handleOptionFAyaPbKAAyaKS3std6getopt13configurationbZb'
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.000368 seconds (0.008604%)
 	Finished in: 0.000368 seconds (0.008604%)
 Function 'std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)':
 	Mangled name: '_D3std9algorithm9iteration40__T8splitterVAyaa6_61203d3d2062TAyaTAyaZ8splitterFNaNbNiNfAyaAyaZS3std9algorithm9iteration40__T8splitterVAyaa6_61203d3d2062TAyaTAyaZ8splitterFAyaAyaZ6Result'
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
-		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
+		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 time
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	6 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.001017 seconds (0.023797%)
 	Finished in: 0.001017 seconds (0.023797%)
 Function 'int std.regex.internal.thompson.ThompsonMatcher!(char, std.regex.internal.ir.Input!(..).Input).ThompsonMatcher.matchImpl!(..).matchImpl(std.regex.internal.ir.Group!(..).Group[])':
@@ -165,7 +165,7 @@ Function 'ref return std.uni.InversionList!(std.uni.GcPolicy).InversionList std.
 Function 'std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S* std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).__lambda7()':
 	Mangled name: '_D3std4conv194__T10emplaceRefTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4FileTE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagTaZ10emplaceRefFKS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplKS3std5stdio4FileKE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagKaZ9__lambda7MFNaNbNiNeZPS3std4conv194__T10emplaceRefTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4FileTE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagTaZ10emplaceRefFKS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplKS3std5stdio4FileKE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagKaZ1S'
 	Called by:
-		void std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 times
+		void std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 time
 	Took: 0.000031 seconds (0.000732%)
 	Finished in: 0.000031 seconds (0.000732%)
 Function 'void std.array.Appender!(..).Appender.put!(..).put(..)':
@@ -182,15 +182,15 @@ Function 'void std.array.Appender!(..).Appender.put!(..).put(..)':
 Function 'void std.format.formatGeneric!(std.array.Appender!(..).Appender, immutable(..).formatGeneric(std.array.Appender!(..).Appender, const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))':
 	Mangled name: '_D3std6format67__T13formatGenericTS3std5array17__T8AppenderTAyaZ8AppenderTHfAyaTaZ13formatGenericFS3std5array17__T8AppenderTAyaZ8AppenderPxvKxS3std6format18__T10FormatSpecTaZ10FormatSpecZv'
 	Calls:
-		void std.format.formatValue!(std.array.Appender!(..).Appender, immutable(..).formatValue(std.array.Appender!(..).Appender, immutable(..)[][float], ref const(std.format.FormatSpec!(..).FormatSpec))	1 times
+		void std.format.formatValue!(std.array.Appender!(..).Appender, immutable(..).formatValue(std.array.Appender!(..).Appender, immutable(..)[][float], ref const(std.format.FormatSpec!(..).FormatSpec))	1 time
 	Called by:
-		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 times
+		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 time
 	Took: 0.000184 seconds (0.004302%)
 	Finished in: 0.176219 seconds (4.123828%)
 Function 'const(..) std.internal.cstring.tempCString!(..).tempCString(..).Res.ptr':
 	Mangled name: '_D3std8internal7cstring23__T11tempCStringTaTAyaZ11tempCStringFAyaZ3Res3ptrMxFNaNbNdNiNeZPxa'
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.000059 seconds (0.001373%)
 	Finished in: 0.000059 seconds (0.001373%)
 Function 'void std.range.primitives.popFront!(..).popFront(..)':
@@ -340,14 +340,14 @@ Function 'void function(std.array.Appender!(..).Appender, scope const(..)*, ref 
 Function 'void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)':
 	Mangled name: '_D3std6getopt101__T10getoptImplTAyaTAyaTDFNaNbNiNfAyaZvTAyaTAyaTDFNaNbNiNfAyaZvTAyaTAyaTPfTAyaTAyaTPbTAyaTAyaTPHfAyaZ10getoptImplFKAAyaKS3std6getopt13configurationKS3std6getopt12GetoptResultKC3std6getopt15GetOptExceptionHAyaAvHAyaAvAyaAyaDFNaNbNiNfAyaZvAyaAyaDFNaNbNiNfAyaZvAyaAyaPfAyaAyaPbAyaAyaPHfAyaZv'
 	Calls:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 		immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.front()	2 times
 		bool std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.empty()	3 times
 		void std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.popFront()	2 times
-		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 times
-		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 times
+		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 time
+		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 time
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.013008 seconds (0.304418%)
 	Finished in: 0.167216 seconds (3.913134%)
 Function 'uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, const(..).formattedWrite(std.array.Appender!(..).Appender, const(..)':
@@ -390,14 +390,14 @@ Function 'std.conv.emplaceRef!(..).emplaceRef(..).S* std.conv.emplaceRef!(..).em
 Function 'void std.internal.cstring.tempCString!(..).tempCString(..).Res.__dtor()':
 	Mangled name: '_D3std8internal7cstring23__T11tempCStringTaTAyaZ11tempCStringFAyaZ3Res6__dtorMFNbNiNeZv'
 	Called by:
-		bool std.file.exists!(..).exists(..)	1 times
-		void main()	1 times
+		bool std.file.exists!(..).exists(..)	1 time
+		void main()	1 time
 	Took: 0.000141 seconds (0.003295%)
 	Finished in: 0.000141 seconds (0.003295%)
 Function 'void std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl.popFront()':
 	Mangled name: '_D3std3utf20__T10byCodeUnitTAxaZ10byCodeUnitFAxaZ14ByCodeUnitImpl8popFrontMFNaNbNiNfZv'
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.000055 seconds (0.001281%)
 	Finished in: 0.000055 seconds (0.001281%)
 Function 'void delegate(..) object._getPostblit!(..)._getPostblit()':
@@ -417,7 +417,7 @@ Function 'void std.format.formatElement!(std.array.Appender!(..).Appender, float
 Function 'bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)':
 	Mangled name: '_D3std6getopt34__T12handleOptionTDFNaNbNiNfAyaZvZ12handleOptionFAyaDFNaNbNiNfAyaZvKAAyaKS3std6getopt13configurationbZb'
 	Calls:
-		void app.main(..).setTarget(..)	1 times
+		void app.main(..).setTarget(..)	1 time
 		bool std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.empty()	18 times
 		void std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.popFront()	12 times
 		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	6 times
@@ -425,9 +425,9 @@ Function 'bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt
 		immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.front()	12 times
 		void std.array.Appender!(..).Appender.put!(..).put(..)	40 times
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.080745 seconds (1.889569%)
 	Finished in: 0.109441 seconds (2.561101%)
 Function 'void std.format.formatChar!(std.array.Appender!(..).Appender).formatChar(std.array.Appender!(..).Appender, const(..)':
@@ -484,24 +484,24 @@ Function 'void std.conv.emplaceRef!(..).emplaceRef(..)':
 Function 'ulong std.exception.enforce!(..).enforce(..)':
 	Mangled name: '_D3std9exception27__T7enforceHTC9ExceptionTmZ7enforceFNaNfmLAxaAyamZm'
 	Called by:
-		std.getopt.GetoptResult std.getopt.getopt!(std.getopt.config, immutable(..).getopt(..)[][], std.getopt.config, immutable(..)	1 times
+		std.getopt.GetoptResult std.getopt.getopt!(std.getopt.config, immutable(..).getopt(..)[][], std.getopt.config, immutable(..)	1 time
 	Took: 0.000059 seconds (0.001373%)
 	Finished in: 0.000059 seconds (0.001373%)
 Function 'void std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted.__dtor()':
 	Mangled name: '_D3std8typecons105__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z10RefCounted6__dtorMFZv'
 	Calls:
-		void object.destroy!(std.stdio.File.ByLine!(..).ByLine.Impl).destroy(ref std.stdio.File.ByLine!(..).ByLine.Impl)	1 times
+		void object.destroy!(std.stdio.File.ByLine!(..).ByLine.Impl).destroy(ref std.stdio.File.ByLine!(..).ByLine.Impl)	1 time
 	Called by:
-		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	1 times
+		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	1 time
 	Took: 0.000943 seconds (0.022058%)
 	Finished in: 0.001252 seconds (0.029289%)
 Function 'immutable(..)[] std.format.format!(..).format(..)':
 	Mangled name: '_D3std6format15__T6formatTaTfZ6formatFNfxAafZAya'
 	Calls:
-		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 times
-		bool std.exception.enforce!(..).enforce(bool, lazy object.Throwable)	1 times
+		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 time
+		bool std.exception.enforce!(..).enforce(bool, lazy object.Throwable)	1 time
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.002523 seconds (0.059035%)
 	Finished in: 0.060446 seconds (1.414546%)
 Function 'void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)':
@@ -509,12 +509,12 @@ Function 'void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.con
 	Calls:
 		immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.front()	2 times
 		bool std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.empty()	3 times
-		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 time
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 		void std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.popFront()	2 times
-		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 times
+		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 time
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.010732 seconds (0.251149%)
 	Finished in: 0.071663 seconds (1.677044%)
 Function '_D8profdump7Profile5toDOTMxFMDFAxaZvfHfAyaZ14__foreachbody5MFNaNfKG4hKxS8profdump8FunctionZi':
@@ -528,9 +528,9 @@ Function '_D8profdump7Profile5toDOTMxFMDFAxaZvfHfAyaZ14__foreachbody5MFNaNfKG4hK
 Function 'std.stdio.File.ByLine!(..).ByLine std.stdio.File.byLine!(..).byLine(std.typecons.Flag!("keepTerminator").Flag, char)':
 	Mangled name: '_D3std5stdio4File15__T6byLineTaTaZ6byLineMFE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagaZS3std5stdio4File15__T6ByLineTaTaZ6ByLine'
 	Calls:
-		ref std.stdio.File.ByLine!(..).ByLine std.stdio.File.ByLine!(..).ByLine.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 times
+		ref std.stdio.File.ByLine!(..).ByLine std.stdio.File.ByLine!(..).ByLine.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 time
 	Called by:
-		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	1 times
+		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	1 time
 	Took: 0.000356 seconds (0.008329%)
 	Finished in: 0.060282 seconds (1.410702%)
 Function 'ref std.format.FormatSpec!(..).FormatSpec std.format.FormatSpec!(..).FormatSpec.__ctor(..)':
@@ -552,15 +552,15 @@ Function 'bool std.regex.internal.thompson.ThompsonOps!(std.regex.internal.thomp
 Function 'bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)':
 	Mangled name: '_D3std6getopt21__T12handleOptionTPfZ12handleOptionFAyaPfKAAyaKS3std6getopt13configurationbZb'
 	Calls:
-		float std.conv.toImpl!(..).toImpl(..)	1 times
+		float std.conv.toImpl!(..).toImpl(..)	1 time
 		bool std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.empty()	3 times
 		void std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.popFront()	2 times
-		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 times
-		long std.string.indexOf!(..).indexOf(..), const(std.typecons.Flag!("caseSensitive").Flag))	1 times
+		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 time
+		long std.string.indexOf!(..).indexOf(..), const(std.typecons.Flag!("caseSensitive").Flag))	1 time
 		immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.front()	2 times
 		void std.array.Appender!(..).Appender.put!(..).put(..)	10 times
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.016036 seconds (0.375260%)
 	Finished in: 0.024268 seconds (0.567923%)
 Function 'const(..) profdump.Profile.functionTimeOf':
@@ -584,7 +584,7 @@ Function 'bool std.uni.InversionList!(std.uni.GcPolicy).InversionList.__xopEqual
 Function 'std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl.frontinout(..)':
 	Mangled name: '_D3std3utf20__T10byCodeUnitTAxaZ10byCodeUnitFAxaZ14ByCodeUnitImpl5frontMNgFNaNbNcNdNiNfZNgxa'
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.000047 seconds (0.001098%)
 	Finished in: 0.000047 seconds (0.001098%)
 Function 'const(..)[] std.string.tr!(..).tr(..)':
@@ -599,9 +599,9 @@ Function 'const(..)[] std.string.tr!(..).tr(..)':
 Function 'long std.string.indexOfAnyNeitherImpl!(..).indexOfAnyNeitherImpl(..)[], const(std.typecons.Flag!("caseSensitive").Flag))':
 	Mangled name: '_D3std6string39__T21indexOfAnyNeitherImplVbi1Vbi1TaTaZ21indexOfAnyNeitherImplFNaNfAxaAxaxE3std8typecons43__T4FlagVAyaa13_6361736553656e736974697665Z4FlagZl'
 	Calls:
-		const(..)[] std.algorithm.searching.findAmong!("a == b", const(..).findAmong(..)	1 times
+		const(..)[] std.algorithm.searching.findAmong!("a == b", const(..).findAmong(..)	1 time
 	Called by:
-		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	1 times
+		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	1 time
 	Took: 0.000106 seconds (0.002471%)
 	Finished in: 0.000544 seconds (0.012722%)
 Function 'void std.regex.internal.parser.Parser!(..)[], std.regex.internal.parser.CodeGen).Parser.parseEscape()':
@@ -610,7 +610,7 @@ Function 'void std.regex.internal.parser.Parser!(..)[], std.regex.internal.parse
 		ulong std.uni.mapTrieIndex!(std.uni.sliceBits!(..).sliceBits, std.uni.sliceBits!(..).sliceBits).mapTrieIndex!(..).mapTrieIndex(..)	2360 times
 		void std.uni.CowArray!(std.uni.GcPolicy).CowArray.__postblit()	60 times
 		ulong std.uni.InversionList!(std.uni.GcPolicy).InversionList.__xtoHash(ref const(std.uni.InversionList!(std.uni.GcPolicy).InversionList))	9 times
-		std.uni.InversionList!(std.uni.GcPolicy).InversionList std.uni.unicode.opDispatch!("Nd").opDispatch()	1 times
+		std.uni.InversionList!(std.uni.GcPolicy).InversionList std.uni.unicode.opDispatch!("Nd").opDispatch()	1 time
 		std.uni.InversionList!(std.uni.GcPolicy).InversionList std.uni.InversionList!(std.uni.GcPolicy).InversionList.opBinary!("&", std.uni.InversionList!(std.uni.GcPolicy).InversionList).opBinary(std.uni.InversionList!(std.uni.GcPolicy).InversionList)	4 times
 		ref return std.uni.InversionList!(std.uni.GcPolicy).InversionList std.uni.InversionList!(std.uni.GcPolicy).InversionList.opOpAssign!("|", std.uni.InversionList!(std.uni.GcPolicy).InversionList).opOpAssign(std.uni.InversionList!(std.uni.GcPolicy).InversionList)	5 times
 		bool std.regex.internal.parser.Parser!(..)[], std.regex.internal.parser.CodeGen).Parser.next()	16 times
@@ -706,15 +706,15 @@ Function 'long std.string.indexOfAnyNeitherImpl!(..).indexOfAnyNeitherImpl(..)[]
 	Calls:
 		int std.string.indexOfAnyNeitherImpl!(..).indexOfAnyNeitherImpl(..)[], const(std.typecons.Flag!("caseSensitive").Flag)).__foreachbody4(..)	8 times
 	Called by:
-		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	1 times
+		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	1 time
 	Took: 0.000219 seconds (0.005125%)
 	Finished in: 0.000309 seconds (0.007231%)
 Function 'std.stdio.File.ByLine!(..).ByLine.Impl* std.conv.emplace!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplace(std.stdio.File.ByLine!(..).ByLine.Impl*, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)':
 	Mangled name: '_D3std4conv144__T7emplaceTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4FileTE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagTaZ7emplaceFPS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplKS3std5stdio4FileKE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagKaZPS3std5stdio4File15__T6ByLineTaTaZ6ByLine4Impl'
 	Calls:
-		void std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 times
+		void std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 time
 	Called by:
-		ref std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted.__ctor!(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).__ctor(ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 times
+		ref std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted.__ctor!(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).__ctor(ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 time
 	Took: 0.000199 seconds (0.004668%)
 	Finished in: 0.043937 seconds (1.028211%)
 Function 'const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender, char, const(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda14!(..).__lambda14(..)':
@@ -732,9 +732,9 @@ Function 'void[] std.array.overlap!(..).overlap(..)':
 Function 'ref std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted.__ctor!(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).__ctor(ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)':
 	Mangled name: '_D3std8typecons105__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z10RefCounted97__T6__ctorTS3std5stdio4FileTE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagTaZ6__ctorMFNcKS3std5stdio4FileKE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagKaZS3std8typecons105__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z10RefCounted'
 	Calls:
-		std.stdio.File.ByLine!(..).ByLine.Impl* std.conv.emplace!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplace(std.stdio.File.ByLine!(..).ByLine.Impl*, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 times
+		std.stdio.File.ByLine!(..).ByLine.Impl* std.conv.emplace!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplace(std.stdio.File.ByLine!(..).ByLine.Impl*, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 time
 	Called by:
-		ref std.stdio.File.ByLine!(..).ByLine std.stdio.File.ByLine!(..).ByLine.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 times
+		ref std.stdio.File.ByLine!(..).ByLine std.stdio.File.ByLine!(..).ByLine.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 time
 	Took: 0.015660 seconds (0.366473%)
 	Finished in: 0.059598 seconds (1.394684%)
 Function 'void std.regex.internal.parser.fixupBytecode!().fixupBytecode(std.regex.internal.ir.Bytecode[])':
@@ -759,7 +759,7 @@ Function 'std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl std.utf.byCodeUn
 	Called by:
 		std.internal.cstring.tempCString!(..).tempCString(..).Res std.internal.cstring.tempCString!(..).tempCString(..)	2 times
 		const(..)[] std.string.wrap!(..).wrap(..)	10 times
-		std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl std.utf.byUTF!(..).byUTF!(..).byUTF(..)	1 times
+		std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl std.utf.byUTF!(..).byUTF!(..).byUTF(..)	1 time
 	Took: 0.000059 seconds (0.001373%)
 	Finished in: 0.000059 seconds (0.001373%)
 Function 'void std.format.formatRange!(std.array.Appender!(..).Appender, immutable(..).formatRange(ref std.array.Appender!(..).Appender, ref immutable(..)[], ref const(std.format.FormatSpec!(..).FormatSpec))':
@@ -827,9 +827,9 @@ Function 'ref return std.uni.InversionList!(std.uni.GcPolicy).InversionList std.
 Function 'std.uni.InversionList!(std.uni.GcPolicy).InversionList std.uni.unicode.opDispatch!("Nd").opDispatch()':
 	Mangled name: '_D3std3uni7unicode27__T10opDispatchVAyaa2_4e64Z10opDispatchFNaNdNfZS3std3uni38__T13InversionListTS3std3uni8GcPolicyZ13InversionList'
 	Calls:
-		std.uni.InversionList!(std.uni.GcPolicy).InversionList std.uni.unicode.loadAny!(std.uni.InversionList!(std.uni.GcPolicy).InversionList, char).loadAny(..)	1 times
+		std.uni.InversionList!(std.uni.GcPolicy).InversionList std.uni.unicode.loadAny!(std.uni.InversionList!(std.uni.GcPolicy).InversionList, char).loadAny(..)	1 time
 	Called by:
-		void std.regex.internal.parser.Parser!(..)[], std.regex.internal.parser.CodeGen).Parser.parseEscape()	1 times
+		void std.regex.internal.parser.Parser!(..)[], std.regex.internal.parser.CodeGen).Parser.parseEscape()	1 time
 	Took: 0.000098 seconds (0.002288%)
 	Finished in: 0.023697 seconds (0.554560%)
 Function 'void std.range.primitives.popFront!(..).popFront(..)':
@@ -849,26 +849,26 @@ Function 'void std.format.formatGeneric!(std.array.Appender!(..).Appender, immut
 Function 'void function(std.array.Appender!(..).Appender, scope const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))* std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda5()':
 	Mangled name: '_D3std6format64__T14formattedWriteTS3std5array17__T8AppenderTAyaZ8AppenderTaTfZ14formattedWriteFS3std5array17__T8AppenderTAyaZ8AppenderxAafZ9__lambda5FNaNbNiNeZPFNaNbNfS3std5array17__T8AppenderTAyaZ8AppenderMPxvKxS3std6format18__T10FormatSpecTaZ10FormatSpecZv'
 	Called by:
-		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 times
+		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 time
 	Took: 0.000059 seconds (0.001373%)
 	Finished in: 0.000059 seconds (0.001373%)
 Function 'bool std.exception.enforce!(..).enforce(bool, lazy object.Throwable)':
 	Mangled name: '_D3std9exception14__T7enforceTbZ7enforceFNaNfbLC6object9ThrowableZb'
 	Called by:
-		immutable(..)[] std.format.format!(..).format(..)	1 times
+		immutable(..)[] std.format.format!(..).format(..)	1 time
 		immutable(..)[] std.format.format!(..).format(..)	6 times
-		immutable(..)[] std.format.format!(..).format(..)	1 times
-		float std.conv.parse!(..).parse(..)	1 times
+		immutable(..)[] std.format.format!(..).format(..)	1 time
+		float std.conv.parse!(..).parse(..)	1 time
 		immutable(..)[] std.format.format!(..).format(..)	5 times
-		void std.format.FormatSpec!(..).FormatSpec.fillUp()	1 times
+		void std.format.FormatSpec!(..).FormatSpec.fillUp()	1 time
 	Took: 0.000129 seconds (0.003020%)
 	Finished in: 0.000129 seconds (0.003020%)
 Function 'std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl std.utf.byUTF!(..).byUTF!(..).byUTF(..)':
 	Mangled name: '_D3std3utf12__T5byUTFTaZ14__T5byUTFTAxaZ5byUTFFNaNbNiNfAxaZS3std3utf20__T10byCodeUnitTAxaZ10byCodeUnitFAxaZ14ByCodeUnitImpl'
 	Calls:
-		std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl std.utf.byCodeUnit!(..).byCodeUnit(..)	1 times
+		std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl std.utf.byCodeUnit!(..).byCodeUnit(..)	1 time
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.000129 seconds (0.003020%)
 	Finished in: 0.000137 seconds (0.003203%)
 Function 'ref std.range.__T11SortedRangeTS3std9algorithm9iteration135__T9MapResultS683std10functional41__T8unaryFunVAyaa6_612e6e616d65VAyaa1_61Z8unaryFunTAyS3std8internal14unicode_tables15UnicodePropertyZ9MapResultS1733std3uni127__T14findUnicodeSetS101_D3std8internal14unicode_tables8uniProps3tabFNaNdNfZAyS3std8internal14unicode_tables15UnicodePropertyTaZ14findUnicodeSetFNaNexAaZ9__lambda2Z.SortedRange std.range.__T11SortedRangeTS3std9algorithm9iteration135__T9MapResultS683std10functional41__T8unaryFunVAyaa6_612e6e616d65VAyaa1_61Z8unaryFunTAyS3std8internal14unicode_tables15UnicodePropertyZ9MapResultS1733std3uni127__T14findUnicodeSetS101_D3std8internal14unicode_tables8uniProps3tabFNaNdNfZAyS3std8internal14unicode_tables15UnicodePropertyTaZ14findUnicodeSetFNaNexAaZ9__lambda2Z.SortedRange.__ctor(std.algorithm.iteration.__T9MapResultS683std10functional41__T8unaryFunVAyaa6_612e6e616d65VAyaa1_61Z8unaryFunTAyS3std8internal14unicode_tables15UnicodePropertyZ.MapResult)':
@@ -887,11 +887,11 @@ Function 'uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char
 	Mangled name: '_D3std6format64__T14formattedWriteTS3std5array17__T8AppenderTAyaZ8AppenderTaTfZ14formattedWriteFNfS3std5array17__T8AppenderTAyaZ8AppenderxAafZk'
 	Calls:
 		bool std.format.FormatSpec!(..).FormatSpec.writeUpToNextSpec!(std.array.Appender!(..).Appender).writeUpToNextSpec(std.array.Appender!(..).Appender)	2 times
-		void function(std.array.Appender!(..).Appender, scope const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))* std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda5()	1 times
-		const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda6!(..).__lambda6(..)	1 times
-		void std.format.formatGeneric!(std.array.Appender!(..).Appender, float, char).formatGeneric(std.array.Appender!(..).Appender, const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))	1 times
+		void function(std.array.Appender!(..).Appender, scope const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))* std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda5()	1 time
+		const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda6!(..).__lambda6(..)	1 time
+		void std.format.formatGeneric!(std.array.Appender!(..).Appender, float, char).formatGeneric(std.array.Appender!(..).Appender, const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))	1 time
 	Called by:
-		immutable(..)[] std.format.format!(..).format(..)	1 times
+		immutable(..)[] std.format.format!(..).format(..)	1 time
 	Took: 0.011737 seconds (0.274672%)
 	Finished in: 0.057900 seconds (1.354962%)
 Function 'void std.regex.Captures!(..).Captures.newMatches(..)':
@@ -913,11 +913,11 @@ Function 'bool std.regex.internal.thompson.ThompsonOps!(std.regex.internal.thomp
 Function 'void std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)':
 	Mangled name: '_D3std4conv194__T10emplaceRefTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4FileTE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagTaZ10emplaceRefFKS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplKS3std5stdio4FileKE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagKaZv'
 	Calls:
-		void std.conv.emplaceInitializer!(std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S).emplaceInitializer(ref std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S)	1 times
-		ref std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S.__ctor(ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 times
-		std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S* std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).__lambda7()	1 times
+		void std.conv.emplaceInitializer!(std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S).emplaceInitializer(ref std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S)	1 time
+		ref std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S.__ctor(ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 time
+		std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S* std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).__lambda7()	1 time
 	Called by:
-		std.stdio.File.ByLine!(..).ByLine.Impl* std.conv.emplace!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplace(std.stdio.File.ByLine!(..).ByLine.Impl*, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 times
+		std.stdio.File.ByLine!(..).ByLine.Impl* std.conv.emplace!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplace(std.stdio.File.ByLine!(..).ByLine.Impl*, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 time
 	Took: 0.000536 seconds (0.012539%)
 	Finished in: 0.043738 seconds (1.023543%)
 Function 'bool std.algorithm.sorting.__T8isSortedS733std10functional45__T9binaryFunVAyaa3_613e62VAyaa1_61VAyaa1_62Z9binaryFunTAfZ.isSorted(..)':
@@ -952,7 +952,7 @@ Function 'ulong std.stdio.File.readln!(..).readln(..)':
 		bool std.exception.enforce!(..).enforce(..)	24 times
 		char[] object.dup!(..).dup(..)	4 times
 	Called by:
-		ref std.stdio.File.ByLine!(..).ByLine.Impl std.stdio.File.ByLine!(..).ByLine.Impl.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 times
+		ref std.stdio.File.ByLine!(..).ByLine.Impl std.stdio.File.ByLine!(..).ByLine.Impl.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 time
 		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	23 times
 	Took: 0.044778 seconds (1.047890%)
 	Finished in: 0.049632 seconds (1.161474%)
@@ -993,7 +993,7 @@ Function 'ulong std.range.SortedRange!(uint[], "a <= b").SortedRange.__T18getTra
 Function 'long std.string.indexOf!(..).indexOf(..), const(std.typecons.Flag!("caseSensitive").Flag))':
 	Mangled name: '_D3std6string16__T7indexOfTAyaZ7indexOfFNaNbNiNfAyaxwxE3std8typecons43__T4FlagVAyaa13_6361736553656e736974697665Z4FlagZl'
 	Called by:
-		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 times
+		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 time
 		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	6 times
 	Took: 0.001385 seconds (0.032400%)
 	Finished in: 0.001385 seconds (0.032400%)
@@ -1015,26 +1015,26 @@ Function 'void function(std.array.Appender!(..).Appender, scope const(..)*, ref 
 Function 'void std.getopt.getoptImpl!().getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)':
 	Mangled name: '_D3std6getopt16__T10getoptImplZ10getoptImplFNfKAAyaKS3std6getopt13configurationKS3std6getopt12GetoptResultKC3std6getopt15GetOptExceptionHAyaAvHAyaAvZv'
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.000970 seconds (0.022699%)
 	Finished in: 0.000970 seconds (0.022699%)
 Function 'void main()':
 	Mangled name: '_Dmain'
 	Calls:
-		immutable(..)[] std.format.format!(..).format(..)	1 times
-		std.internal.cstring.tempCString!(..).tempCString(..).Res std.internal.cstring.tempCString!(..).tempCString(..)	1 times
-		void std.internal.cstring.tempCString!(..).tempCString(..).Res.__dtor()	1 times
-		void std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl.popFront()	1 times
+		immutable(..)[] std.format.format!(..).format(..)	1 time
+		std.internal.cstring.tempCString!(..).tempCString(..).Res std.internal.cstring.tempCString!(..).tempCString(..)	1 time
+		void std.internal.cstring.tempCString!(..).tempCString(..).Res.__dtor()	1 time
+		void std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl.popFront()	1 time
 		void[] std.array.overlap!(..).overlap(..)	4 times
-		std.getopt.GetoptResult std.getopt.getopt!(std.getopt.config, immutable(..).getopt(..)[][], std.getopt.config, immutable(..)	1 times
-		const(..) std.internal.cstring.tempCString!(..).tempCString(..).Res.ptr	1 times
-		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	1 times
-		std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl std.utf.byUTF!(..).byUTF!(..).byUTF(..)	1 times
-		void* std.exception.enforce!(..).enforce(..)	1 times
-		std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl.frontinout(..)	1 times
-		immutable(..)[] std.format.format!(..).format(..)	1 times
-		const(..) profdump.Profile.toDOT	1 times
-		bool std.file.exists!(..).exists(..)	1 times
+		std.getopt.GetoptResult std.getopt.getopt!(std.getopt.config, immutable(..).getopt(..)[][], std.getopt.config, immutable(..)	1 time
+		const(..) std.internal.cstring.tempCString!(..).tempCString(..).Res.ptr	1 time
+		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	1 time
+		std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl std.utf.byUTF!(..).byUTF!(..).byUTF(..)	1 time
+		void* std.exception.enforce!(..).enforce(..)	1 time
+		std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl.frontinout(..)	1 time
+		immutable(..)[] std.format.format!(..).format(..)	1 time
+		const(..) profdump.Profile.toDOT	1 time
+		bool std.file.exists!(..).exists(..)	1 time
 		const(..) std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl.empty	2 times
 	Took: 0.085309 seconds (1.996381%)
 	Finished in: 4.273190 seconds (100.000000%)
@@ -1148,9 +1148,9 @@ Function 'int std.algorithm.comparison.cmp!("a < b", std.algorithm.iteration.Fil
 Function 'float std.conv.parse!(..).parse(..)':
 	Mangled name: '_D3std4conv16__T5parseTfTAyaZ5parseFNaNfKAyaZf'
 	Calls:
-		bool std.exception.enforce!(..).enforce(bool, lazy object.Throwable)	1 times
+		bool std.exception.enforce!(..).enforce(bool, lazy object.Throwable)	1 time
 	Called by:
-		float std.conv.toImpl!(..).toImpl(..)	1 times
+		float std.conv.toImpl!(..).toImpl(..)	1 time
 	Took: 0.000720 seconds (0.016841%)
 	Finished in: 0.000755 seconds (0.017665%)
 Function 'ubyte std.utf.codeLength!(..).codeLength(..)':
@@ -1199,7 +1199,7 @@ Function '_D3std5array17__T8AppenderTAyaZ8Appender12__T3putTAyaZ3putMFAyaZ10bigD
 Function 'void function(std.array.Appender!(..).Appender, scope const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))* std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda5()':
 	Mangled name: '_D3std6format68__T14formattedWriteTS3std5array17__T8AppenderTAyaZ8AppenderTaTHfAyaZ14formattedWriteFS3std5array17__T8AppenderTAyaZ8AppenderxAaHfAyaZ9__lambda5FNaNbNiNeZPFNaNbNfS3std5array17__T8AppenderTAyaZ8AppenderMPxvKxS3std6format18__T10FormatSpecTaZ10FormatSpecZv'
 	Called by:
-		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 times
+		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 time
 	Took: 0.000016 seconds (0.000366%)
 	Finished in: 0.000016 seconds (0.000366%)
 Function 'void std.array.Appender!(..).Appender.put!(..).put(..)':
@@ -1252,7 +1252,7 @@ Function 'bool std.regex.internal.thompson.ThompsonOps!(std.regex.internal.thomp
 Function 'uint std.utf.strideBack!(..).strideBack(..)':
 	Mangled name: '_D3std3utf19__T10strideBackTAaZ10strideBackFNaNfKAamZk'
 	Called by:
-		ref std.stdio.File.ByLine!(..).ByLine.Impl std.stdio.File.ByLine!(..).ByLine.Impl.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 times
+		ref std.stdio.File.ByLine!(..).ByLine.Impl std.stdio.File.ByLine!(..).ByLine.Impl.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 time
 		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	23 times
 	Took: 0.000630 seconds (0.014736%)
 	Finished in: 0.000630 seconds (0.014736%)
@@ -1324,7 +1324,7 @@ Function 'void std.format.FormatSpec!(..).FormatSpec.fillUp()':
 	Calls:
 		dchar std.utf.decode!(..).decode(..)	2 times
 		bool std.range.primitives.empty!(..).empty(..)	24 times
-		bool std.exception.enforce!(..).enforce(bool, lazy object.Throwable)	1 times
+		bool std.exception.enforce!(..).enforce(bool, lazy object.Throwable)	1 time
 	Called by:
 		bool std.format.FormatSpec!(..).FormatSpec.writeUpToNextSpec!(std.array.Appender!(..).Appender).writeUpToNextSpec(std.array.Appender!(..).Appender)	67 times
 	Took: 0.010255 seconds (0.239983%)
@@ -1345,10 +1345,10 @@ Function 'bool std.algorithm.iteration.splitter!("a == b", immutable(..).splitte
 Function 'std.getopt.GetoptResult std.getopt.getopt!(std.getopt.config, immutable(..).getopt(..)[][], std.getopt.config, immutable(..)':
 	Mangled name: '_D3std6getopt140__T6getoptTE3std6getopt6configTAyaTAyaTDFNaNbNiNfAyaZvTAyaTAyaTDFNaNbNiNfAyaZvTAyaTAyaTDFNaNbNiNfAyaZvTAyaTAyaTPfTAyaTAyaTPbTAyaTAyaTPHfAyaZ6getoptFKAAyaE3std6getopt6configAyaAyaDFNaNbNiNfAyaZvAyaAyaDFNaNbNiNfAyaZvAyaAyaDFNaNbNiNfAyaZvAyaAyaPfAyaAyaPbAyaAyaPHfAyaZS3std6getopt12GetoptResult'
 	Calls:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
-		ulong std.exception.enforce!(..).enforce(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
+		ulong std.exception.enforce!(..).enforce(..)	1 time
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.001604 seconds (0.037526%)
 	Finished in: 0.248371 seconds (5.812314%)
 Function 'const(..) profdump.Profile.toDOT':
@@ -1356,10 +1356,10 @@ Function 'const(..) profdump.Profile.toDOT':
 	Calls:
 		void app.main(..).__lambda4(..)	2 times
 		_D8profdump7Profile5toDOTMxFMDFAxaZvfHfAyaZ14__foreachbody6MFKG4hKAG4hZi	5 times
-		ubyte[4] std.digest.digest.digest!(std.digest.crc.CRC32, immutable(..).digest(..)	1 times
+		ubyte[4] std.digest.digest.digest!(std.digest.crc.CRC32, immutable(..).digest(..)	1 time
 		_D8profdump7Profile5toDOTMxFMDFAxaZvfHfAyaZ14__foreachbody5MFNaNfKG4hKxS8profdump8FunctionZi	5 times
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.002272 seconds (0.053177%)
 	Finished in: 0.167274 seconds (3.914507%)
 Function 'void* std.exception.enforce!(..).enforce(..)':
@@ -1367,7 +1367,7 @@ Function 'void* std.exception.enforce!(..).enforce(..)':
 	Called by:
 		void std.regex.Captures!(..).Captures.newMatches(..)	5 times
 		std.regex.Captures!(..).Captures std.regex.__T9matchOnceS453std5regex8internal8thompson15ThompsonMatcherTS3std5regex8internal2ir12__T5RegexTaZ5RegexTAaZ.matchOnce(char[], std.regex.internal.ir.Regex!(..).Regex)	17 times
-		void main()	1 times
+		void main()	1 time
 	Took: 0.000145 seconds (0.003386%)
 	Finished in: 0.000145 seconds (0.003386%)
 Function 'bool std.regex.internal.thompson.ThompsonOps!(std.regex.internal.thompson.ThompsonMatcher!(char, std.regex.internal.ir.Input!(..).Input).ThompsonMatcher, std.regex.internal.thompson.ThompsonMatcher!(char, std.regex.internal.ir.Input!(..).Input).ThompsonMatcher.State, false).op!(..).op(std.regex.internal.thompson.ThompsonMatcher!(char, std.regex.internal.ir.Input!(..).Input).ThompsonMatcher*, std.regex.internal.thompson.ThompsonMatcher!(char, std.regex.internal.ir.Input!(..).Input).ThompsonMatcher.State*)':
@@ -1382,11 +1382,11 @@ Function 'bool std.regex.internal.thompson.ThompsonOps!(std.regex.internal.thomp
 Function 'ref std.stdio.File.ByLine!(..).ByLine.Impl std.stdio.File.ByLine!(..).ByLine.Impl.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)':
 	Mangled name: '_D3std5stdio4File15__T6ByLineTaTaZ6ByLine4Impl6__ctorMFNcS3std5stdio4FileE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagaZS3std5stdio4File15__T6ByLineTaTaZ6ByLine4Impl'
 	Calls:
-		ulong std.stdio.File.readln!(..).readln(..)	1 times
-		uint std.utf.strideBack!(..).strideBack(..)	1 times
-		dchar std.utf.decode!(..).decode(..)	1 times
+		ulong std.stdio.File.readln!(..).readln(..)	1 time
+		uint std.utf.strideBack!(..).strideBack(..)	1 time
+		dchar std.utf.decode!(..).decode(..)	1 time
 	Called by:
-		ref std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S.__ctor(ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 times
+		ref std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S.__ctor(ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 time
 	Took: 0.001369 seconds (0.032034%)
 	Finished in: 0.042303 seconds (0.989953%)
 Function 'void std.regex.internal.ir.Regex!(..).Regex.checkIfOneShot()':
@@ -1408,7 +1408,7 @@ Function 'std.uni.InversionList!(std.uni.GcPolicy).InversionList std.regex.inter
 Function 'bool std.exception.enforceEx!(std.format.FormatException).enforceEx!(..).enforceEx(..)':
 	Mangled name: '_D3std9exception45__T9enforceExHTC3std6format15FormatExceptionZ16__T9enforceExTbZ9enforceExFNaNfbLAyaAyamZb'
 	Called by:
-		void std.format.formatValue!(std.array.Appender!(..).Appender, immutable(..).formatValue(std.array.Appender!(..).Appender, immutable(..)[][float], ref const(std.format.FormatSpec!(..).FormatSpec))	1 times
+		void std.format.formatValue!(std.array.Appender!(..).Appender, immutable(..).formatValue(std.array.Appender!(..).Appender, immutable(..)[][float], ref const(std.format.FormatSpec!(..).FormatSpec))	1 time
 		void std.format.formatValue!(std.array.Appender!(..).Appender, const(..).formatValue(std.array.Appender!(..).Appender, const(..), ref const(std.format.FormatSpec!(..).FormatSpec))	6 times
 		bool std.format.FormatSpec!(..).FormatSpec.writeUpToNextSpec!(std.array.Appender!(..).Appender).writeUpToNextSpec(std.array.Appender!(..).Appender)	77 times
 		void std.format.formatValue!(std.array.Appender!(..).Appender, float, char).formatValue(std.array.Appender!(..).Appender, float, ref const(std.format.FormatSpec!(..).FormatSpec))	54 times
@@ -1432,14 +1432,14 @@ Function 'uint std.uni.sliceBits!(..).sliceBits.opCall!(..).opCall(..)':
 Function 'void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)':
 	Mangled name: '_D3std6getopt42__T10getoptImplTAyaTAyaTPbTAyaTAyaTPHfAyaZ10getoptImplFKAAyaKS3std6getopt13configurationKS3std6getopt12GetoptResultKC3std6getopt15GetOptExceptionHAyaAvHAyaAvAyaAyaPbAyaAyaPHfAyaZv'
 	Calls:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
-		immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.front()	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
+		immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.front()	1 time
 		bool std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.empty()	2 times
-		void std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.popFront()	1 times
-		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 times
-		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 times
+		void std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.popFront()	1 time
+		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 time
+		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 time
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.020784 seconds (0.486373%)
 	Finished in: 0.034942 seconds (0.817700%)
 Function '_D8profdump7Profile5toDOTMxFMDFAxaZvfHfAyaZ3clrMFNaNbfZAya':
@@ -1480,14 +1480,14 @@ Function 'const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender,
 Function 'void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)':
 	Mangled name: '_D3std6getopt125__T10getoptImplTAyaTAyaTDFNaNbNiNfAyaZvTAyaTAyaTDFNaNbNiNfAyaZvTAyaTAyaTDFNaNbNiNfAyaZvTAyaTAyaTPfTAyaTAyaTPbTAyaTAyaTPHfAyaZ10getoptImplFKAAyaKS3std6getopt13configurationKS3std6getopt12GetoptResultKC3std6getopt15GetOptExceptionHAyaAvHAyaAvAyaAyaDFNaNbNiNfAyaZvAyaAyaDFNaNbNiNfAyaZvAyaAyaDFNaNbNiNfAyaZvAyaAyaPfAyaAyaPbAyaAyaPHfAyaZv'
 	Calls:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 		immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.front()	2 times
 		bool std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.empty()	3 times
 		void std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.popFront()	2 times
-		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 times
-		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 times
+		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 time
+		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 time
 	Called by:
-		std.getopt.GetoptResult std.getopt.getopt!(std.getopt.config, immutable(..).getopt(..)[][], std.getopt.config, immutable(..)	1 times
+		std.getopt.GetoptResult std.getopt.getopt!(std.getopt.config, immutable(..).getopt(..)[][], std.getopt.config, immutable(..)	1 time
 	Took: 0.034805 seconds (0.814496%)
 	Finished in: 0.246709 seconds (5.773415%)
 Function 'const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender, char, const(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda22!(..).__lambda22(..)':
@@ -1577,10 +1577,10 @@ Function 'const(..) std.format.FormatSpec!(..).FormatSpec.flPlus':
 Function 'immutable(..)[] std.format.format!(..).format(..)':
 	Mangled name: '_D3std6format19__T6formatTaTHfAyaZ6formatFNfxAaHfAyaZAya'
 	Calls:
-		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 times
-		bool std.exception.enforce!(..).enforce(bool, lazy object.Throwable)	1 times
+		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 time
+		bool std.exception.enforce!(..).enforce(bool, lazy object.Throwable)	1 time
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.002441 seconds (0.057113%)
 	Finished in: 0.183513 seconds (4.294526%)
 Function 'void std.array.insertInPlace!(std.regex.internal.ir.Bytecode, std.regex.internal.ir.Bytecode).insertInPlace(ref std.regex.internal.ir.Bytecode[], ulong, std.regex.internal.ir.Bytecode).__lambda5()':
@@ -1594,10 +1594,10 @@ Function 'void std.array.insertInPlace!(std.regex.internal.ir.Bytecode, std.rege
 Function 'bool std.file.exists!(..).exists(..)':
 	Mangled name: '_D3std4file15__T6existsTAyaZ6existsFNbNiNfAyaZb'
 	Calls:
-		std.internal.cstring.tempCString!(..).tempCString(..).Res std.internal.cstring.tempCString!(..).tempCString(..)	1 times
-		void std.internal.cstring.tempCString!(..).tempCString(..).Res.__dtor()	1 times
+		std.internal.cstring.tempCString!(..).tempCString(..).Res std.internal.cstring.tempCString!(..).tempCString(..)	1 time
+		void std.internal.cstring.tempCString!(..).tempCString(..).Res.__dtor()	1 time
 	Called by:
-		void main()	1 times
+		void main()	1 time
 	Took: 0.017921 seconds (0.419375%)
 	Finished in: 0.019231 seconds (0.450037%)
 Function 'void std.array.copyBackwards!(std.regex.internal.ir.Bytecode).copyBackwards(std.regex.internal.ir.Bytecode[], std.regex.internal.ir.Bytecode[])':
@@ -1689,20 +1689,20 @@ Function 'void std.regex.internal.parser.postprocess!(..).postprocess(ref std.re
 Function 'const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda6!(..).__lambda6(..)':
 	Mangled name: '_D3std6format68__T14formattedWriteTS3std5array17__T8AppenderTAyaZ8AppenderTaTHfAyaZ14formattedWriteFS3std5array17__T8AppenderTAyaZ8AppenderxAaHfAyaZ20__T9__lambda6THfAyaZ9__lambda6FNaNbNiNeNkKHfAyaZxPv'
 	Called by:
-		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 times
+		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 time
 	Took: 0.000020 seconds (0.000458%)
 	Finished in: 0.000020 seconds (0.000458%)
 Function 'void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)':
 	Mangled name: '_D3std6getopt31__T10getoptImplTAyaTAyaTPHfAyaZ10getoptImplFKAAyaKS3std6getopt13configurationKS3std6getopt12GetoptResultKC3std6getopt15GetOptExceptionHAyaAvHAyaAvAyaAyaPHfAyaZv'
 	Calls:
-		void std.getopt.getoptImpl!().getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
-		immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.front()	1 times
+		void std.getopt.getoptImpl!().getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
+		immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.front()	1 time
 		bool std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.empty()	2 times
-		void std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.popFront()	1 times
-		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 times
-		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 times
+		void std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.popFront()	1 time
+		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 time
+		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 time
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.010079 seconds (0.235864%)
 	Finished in: 0.012609 seconds (0.295082%)
 Function 'std.regex.internal.ir.Regex!(..).Regex std.regex.regex!(..).regex(..)':
@@ -1716,7 +1716,7 @@ Function 'std.regex.internal.ir.Regex!(..).Regex std.regex.regex!(..).regex(..)'
 Function 'void std.conv.emplaceInitializer!(std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S).emplaceInitializer(ref std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S)':
 	Mangled name: '_D3std4conv380__T18emplaceInitializerTS3std4conv194__T10emplaceRefTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4FileTE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagTaZ10emplaceRefFKS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplKS3std5stdio4FileKE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagKaZ1SZ18emplaceInitializerFNaNbNiNeKS3std4conv194__T10emplaceRefTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4FileTE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagTaZ10emplaceRefFKS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplKS3std5stdio4FileKE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagKaZ1SZv'
 	Called by:
-		void std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 times
+		void std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 time
 	Took: 0.000239 seconds (0.005583%)
 	Finished in: 0.000239 seconds (0.005583%)
 Function 'ref std.regex.internal.kickstart.ShiftOr!(..).ShiftOr std.regex.internal.kickstart.ShiftOr!(..).ShiftOr.__ctor(ref std.regex.internal.ir.Regex!(..).Regex, uint[])':
@@ -1729,7 +1729,7 @@ Function 'ref std.regex.internal.kickstart.ShiftOr!(..).ShiftOr std.regex.intern
 		ulong std.range.SortedRange!(uint[], "a <= b").SortedRange.__T18getTransitionIndexVE3std5range12SearchPolicyi3S683std5range39__T11SortedRangeTAkVAyaa6_61203c3d2062Z11SortedRange3geqTyiZ.getTransitionIndex(..)	120 times
 		void std.uni.CowArray!(std.uni.GcPolicy).CowArray.__dtor()	34 times
 		ulong std.utf.encode!(..).encode(..)	466 times
-		void std.uni.InversionList!(std.uni.GcPolicy).InversionList.__fieldDtor()	1 times
+		void std.uni.InversionList!(std.uni.GcPolicy).InversionList.__fieldDtor()	1 time
 		ubyte std.utf.codeLength!(..).codeLength(..)	5 times
 	Called by:
 		void std.regex.internal.parser.postprocess!(..).postprocess(ref std.regex.internal.ir.Regex!(..).Regex)	2 times
@@ -1744,15 +1744,15 @@ Function 'void std.stdio.File.LockingTextWriter.put!(..).put(..)':
 Function 'void object.destroy!(std.stdio.File.ByLine!(..).ByLine.Impl).destroy(ref std.stdio.File.ByLine!(..).ByLine.Impl).__lambda2()':
 	Mangled name: '_D6object58__T7destroyTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplZ7destroyFKS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplZ9__lambda2MFNaNbNiNeZv'
 	Called by:
-		void object.destroy!(std.stdio.File.ByLine!(..).ByLine.Impl).destroy(ref std.stdio.File.ByLine!(..).ByLine.Impl)	1 times
+		void object.destroy!(std.stdio.File.ByLine!(..).ByLine.Impl).destroy(ref std.stdio.File.ByLine!(..).ByLine.Impl)	1 time
 	Took: 0.000184 seconds (0.004302%)
 	Finished in: 0.000184 seconds (0.004302%)
 Function 'void object.destroy!(std.stdio.File.ByLine!(..).ByLine.Impl).destroy(ref std.stdio.File.ByLine!(..).ByLine.Impl)':
 	Mangled name: '_D6object58__T7destroyTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplZ7destroyFNfKS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplZv'
 	Calls:
-		void object.destroy!(std.stdio.File.ByLine!(..).ByLine.Impl).destroy(ref std.stdio.File.ByLine!(..).ByLine.Impl).__lambda2()	1 times
+		void object.destroy!(std.stdio.File.ByLine!(..).ByLine.Impl).destroy(ref std.stdio.File.ByLine!(..).ByLine.Impl).__lambda2()	1 time
 	Called by:
-		void std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted.__dtor()	1 times
+		void std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted.__dtor()	1 time
 	Took: 0.000125 seconds (0.002929%)
 	Finished in: 0.000309 seconds (0.007231%)
 Function '_D8profdump7Profile5toDOTMxFMDFAxaZvfHfAyaZ14__foreachbody6MFKG4hKAG4hZi':
@@ -1829,7 +1829,7 @@ Function 'void object._doPostblit!(..)._doPostblit(..)':
 Function 'const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda6!(..).__lambda6(..)':
 	Mangled name: '_D3std6format64__T14formattedWriteTS3std5array17__T8AppenderTAyaZ8AppenderTaTfZ14formattedWriteFS3std5array17__T8AppenderTAyaZ8AppenderxAafZ16__T9__lambda6TfZ9__lambda6FNaNbNiNeNkKfZxPv'
 	Called by:
-		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 times
+		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 time
 	Took: 0.000023 seconds (0.000549%)
 	Finished in: 0.000023 seconds (0.000549%)
 Function 'std.utf.byUTF!(..).byUTF!(std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl).byUTF(std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl).Result std.utf.byUTF!(..).byUTF!(std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl).byUTF(std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl)':
@@ -1841,14 +1841,14 @@ Function 'std.utf.byUTF!(..).byUTF!(std.utf.byCodeUnit!(..).byCodeUnit(..).ByCod
 Function 'void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)':
 	Mangled name: '_D3std6getopt77__T10getoptImplTAyaTAyaTDFNaNbNiNfAyaZvTAyaTAyaTPfTAyaTAyaTPbTAyaTAyaTPHfAyaZ10getoptImplFKAAyaKS3std6getopt13configurationKS3std6getopt12GetoptResultKC3std6getopt15GetOptExceptionHAyaAvHAyaAvAyaAyaDFNaNbNiNfAyaZvAyaAyaPfAyaAyaPbAyaAyaPHfAyaZv'
 	Calls:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 		immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.front()	2 times
 		bool std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.empty()	3 times
 		void std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result.popFront()	2 times
-		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 times
-		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 times
+		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 time
+		std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..).Result std.algorithm.iteration.splitter!("a == b", immutable(..).splitter(..)	1 time
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.011600 seconds (0.271468%)
 	Finished in: 0.116285 seconds (2.721273%)
 Function 'bool std.regex.internal.thompson.ThompsonOps!(std.regex.internal.thompson.ThompsonMatcher!(char, std.regex.internal.ir.Input!(..).Input).ThompsonMatcher, std.regex.internal.thompson.ThompsonMatcher!(char, std.regex.internal.ir.Input!(..).Input).ThompsonMatcher.State, true).op!(..).op(std.regex.internal.thompson.ThompsonMatcher!(char, std.regex.internal.ir.Input!(..).Input).ThompsonMatcher*, std.regex.internal.thompson.ThompsonMatcher!(char, std.regex.internal.ir.Input!(..).Input).ThompsonMatcher.State*)':
@@ -1912,11 +1912,11 @@ Function 'void std.algorithm.iteration.splitter!("a == b", immutable(..).splitte
 	Called by:
 		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	2 times
 		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	2 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	2 times
 		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	2 times
 		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	12 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	2 times
 	Took: 0.004158 seconds (0.097293%)
 	Finished in: 0.004392 seconds (0.102785%)
@@ -1944,20 +1944,20 @@ Function 'immutable(..)[] std.algorithm.iteration.splitter!("a == b", immutable(
 	Called by:
 		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	2 times
 		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	2 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	2 times
 		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	2 times
 		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	12 times
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	2 times
 	Took: 0.003207 seconds (0.075052%)
 	Finished in: 0.014264 seconds (0.333798%)
 Function 'ref std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char).S.__ctor(ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)':
 	Mangled name: '_D3std4conv194__T10emplaceRefTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4FileTE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagTaZ10emplaceRefFKS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplKS3std5stdio4FileKE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagKaZ1S6__ctorMFNcKS3std5stdio4FileKE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagKaZS3std4conv194__T10emplaceRefTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplTS3std5stdio4FileTE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagTaZ10emplaceRefFKS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplKS3std5stdio4FileKE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagKaZ1S'
 	Calls:
-		ref std.stdio.File.ByLine!(..).ByLine.Impl std.stdio.File.ByLine!(..).ByLine.Impl.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 times
+		ref std.stdio.File.ByLine!(..).ByLine.Impl std.stdio.File.ByLine!(..).ByLine.Impl.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 time
 	Called by:
-		void std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 times
+		void std.conv.emplaceRef!(std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File.ByLine!(..).ByLine.Impl, std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).emplaceRef(ref std.stdio.File.ByLine!(..).ByLine.Impl, ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 time
 	Took: 0.000630 seconds (0.014736%)
 	Finished in: 0.042932 seconds (1.004689%)
 Function 'ulong std.regex.internal.kickstart.ShiftOr!(..).ShiftOr.search(..)':
@@ -1973,7 +1973,7 @@ Function 'const(..)[] std.algorithm.searching.findAmong!("a == b", const(..).fin
 		const(..)[] std.algorithm.searching.find!("a == b", const(..).find(..)	19 times
 		void std.range.primitives.popFront!(..).popFront(..)	18 times
 	Called by:
-		long std.string.indexOfAnyNeitherImpl!(..).indexOfAnyNeitherImpl(..)[], const(std.typecons.Flag!("caseSensitive").Flag))	1 times
+		long std.string.indexOfAnyNeitherImpl!(..).indexOfAnyNeitherImpl(..)[], const(std.typecons.Flag!("caseSensitive").Flag))	1 time
 	Took: 0.000223 seconds (0.005217%)
 	Finished in: 0.000438 seconds (0.010251%)
 Function 'bool std.exception.enforce!(..).enforce(..)':
@@ -1993,7 +1993,7 @@ Function 'bool std.exception.enforce!(..).enforce(..)':
 Function 'dchar std.utf.decode!(..).decode(..)':
 	Mangled name: '_D3std3utf93__T6decodeVE3std8typecons55__T4FlagVAyaa19_7573655265706c6163656d656e744463686172Z4Flagi0TAaZ6decodeFNaNeKAaKmZw'
 	Called by:
-		ref std.stdio.File.ByLine!(..).ByLine.Impl std.stdio.File.ByLine!(..).ByLine.Impl.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 times
+		ref std.stdio.File.ByLine!(..).ByLine.Impl std.stdio.File.ByLine!(..).ByLine.Impl.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)	1 time
 		ref profdump.Profile profdump.Profile.__ctor(ref std.stdio.File)	23 times
 	Took: 0.000317 seconds (0.007414%)
 	Finished in: 0.000317 seconds (0.007414%)
@@ -2017,14 +2017,14 @@ Function 'std.internal.cstring.tempCString!(..).tempCString(..).Res std.internal
 		std.internal.cstring.tempCString!(..).tempCString(..).Res std.internal.cstring.tempCString!(..).tempCString(..).Res.trustedVoidInit()	2 times
 		std.utf.byCodeUnit!(..).byCodeUnit(..).ByCodeUnitImpl std.utf.byCodeUnit!(..).byCodeUnit(..)	2 times
 	Called by:
-		bool std.file.exists!(..).exists(..)	1 times
-		void main()	1 times
+		bool std.file.exists!(..).exists(..)	1 time
+		void main()	1 time
 	Took: 0.002030 seconds (0.047502%)
 	Finished in: 0.002139 seconds (0.050065%)
 Function 'void app.main(..).setTarget(..)':
 	Mangled name: '_D3app4mainFAAyaZ9setTargetMFNaNbNiNfAyaZv'
 	Called by:
-		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 times
+		bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)	1 time
 	Took: 0.000239 seconds (0.005583%)
 	Finished in: 0.000239 seconds (0.005583%)
 Function 'uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, const(..).formattedWrite(std.array.Appender!(..).Appender, const(..)':
@@ -2054,7 +2054,7 @@ Function 'void std.format.formatGeneric!(std.array.Appender!(..).Appender, float
 	Calls:
 		void std.format.formatValue!(std.array.Appender!(..).Appender, float, char).formatValue(std.array.Appender!(..).Appender, float, ref const(std.format.FormatSpec!(..).FormatSpec))	21 times
 	Called by:
-		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 times
+		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, float).formattedWrite(std.array.Appender!(..).Appender, const(..)	1 time
 		uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, const(..).formattedWrite(std.array.Appender!(..).Appender, const(..)	20 times
 	Took: 0.000438 seconds (0.010251%)
 	Finished in: 0.075989 seconds (1.778273%)
@@ -2073,28 +2073,28 @@ Function 'void function(std.array.Appender!(..).Appender, scope const(..)*, ref 
 Function 'uint std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..)':
 	Mangled name: '_D3std6format68__T14formattedWriteTS3std5array17__T8AppenderTAyaZ8AppenderTaTHfAyaZ14formattedWriteFNfS3std5array17__T8AppenderTAyaZ8AppenderxAaHfAyaZk'
 	Calls:
-		void function(std.array.Appender!(..).Appender, scope const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))* std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda5()	1 times
+		void function(std.array.Appender!(..).Appender, scope const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))* std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda5()	1 time
 		bool std.format.FormatSpec!(..).FormatSpec.writeUpToNextSpec!(std.array.Appender!(..).Appender).writeUpToNextSpec(std.array.Appender!(..).Appender)	2 times
-		const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda6!(..).__lambda6(..)	1 times
-		void std.format.formatGeneric!(std.array.Appender!(..).Appender, immutable(..).formatGeneric(std.array.Appender!(..).Appender, const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))	1 times
+		const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender, char, immutable(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda6!(..).__lambda6(..)	1 time
+		void std.format.formatGeneric!(std.array.Appender!(..).Appender, immutable(..).formatGeneric(std.array.Appender!(..).Appender, const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))	1 time
 	Called by:
-		immutable(..)[] std.format.format!(..).format(..)	1 times
+		immutable(..)[] std.format.format!(..).format(..)	1 time
 	Took: 0.001345 seconds (0.031485%)
 	Finished in: 0.181041 seconds (4.236681%)
 Function 'bool std.getopt.handleOption!(..).handleOption(..)[][], ref std.getopt.configuration, bool)':
 	Mangled name: '_D3std6getopt25__T12handleOptionTPHfAyaZ12handleOptionFAyaPHfAyaKAAyaKS3std6getopt13configurationbZb'
 	Called by:
-		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 times
+		void std.getopt.getoptImpl!(..).getoptImpl(..)[][], ref std.getopt.configuration, ref std.getopt.GetoptResult, ref std.getopt.GetOptException, void[][immutable(..)	1 time
 	Took: 0.000372 seconds (0.008695%)
 	Finished in: 0.000372 seconds (0.008695%)
 Function 'void std.format.formatValue!(std.array.Appender!(..).Appender, immutable(..).formatValue(std.array.Appender!(..).Appender, immutable(..)[][float], ref const(std.format.FormatSpec!(..).FormatSpec))':
 	Mangled name: '_D3std6format65__T11formatValueTS3std5array17__T8AppenderTAyaZ8AppenderTHfAyaTaZ11formatValueFNfS3std5array17__T8AppenderTAyaZ8AppenderHfAyaKxS3std6format18__T10FormatSpecTaZ10FormatSpecZv'
 	Calls:
 		int std.format.formatValue!(std.array.Appender!(..).Appender, immutable(..).formatValue(std.array.Appender!(..).Appender, immutable(..)[][float], ref const(std.format.FormatSpec!(..).FormatSpec)).__foreachbody5(..)	6 times
-		bool std.exception.enforceEx!(std.format.FormatException).enforceEx!(..).enforceEx(..)	1 times
+		bool std.exception.enforceEx!(std.format.FormatException).enforceEx!(..).enforceEx(..)	1 time
 		void std.array.Appender!(..).Appender.put!(..).put(..)	2 times
 	Called by:
-		void std.format.formatGeneric!(std.array.Appender!(..).Appender, immutable(..).formatGeneric(std.array.Appender!(..).Appender, const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))	1 times
+		void std.format.formatGeneric!(std.array.Appender!(..).Appender, immutable(..).formatGeneric(std.array.Appender!(..).Appender, const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))	1 time
 	Took: 0.002527 seconds (0.059126%)
 	Finished in: 0.176035 seconds (4.119526%)
 Function 'const(..) std.format.formattedWrite!(std.array.Appender!(..).Appender, char, const(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda18!(..).__lambda18(..)':
@@ -2203,9 +2203,9 @@ Function 'uint std.regex.internal.parser.postprocess!(..).postprocess(ref std.re
 Function 'ref std.stdio.File.ByLine!(..).ByLine std.stdio.File.ByLine!(..).ByLine.__ctor(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char)':
 	Mangled name: '_D3std5stdio4File15__T6ByLineTaTaZ6ByLine6__ctorMFNcS3std5stdio4FileE3std8typecons45__T4FlagVAyaa14_6b6565705465726d696e61746f72Z4FlagaZS3std5stdio4File15__T6ByLineTaTaZ6ByLine'
 	Calls:
-		ref std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted.__ctor!(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).__ctor(ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 times
+		ref std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted std.typecons.__T10RefCountedTS3std5stdio4File15__T6ByLineTaTaZ6ByLine4ImplVE3std8typecons24RefCountedAutoInitializei0Z.RefCounted.__ctor!(std.stdio.File, std.typecons.Flag!("keepTerminator").Flag, char).__ctor(ref std.stdio.File, ref std.typecons.Flag!("keepTerminator").Flag, ref char)	1 time
 	Called by:
-		std.stdio.File.ByLine!(..).ByLine std.stdio.File.byLine!(..).byLine(std.typecons.Flag!("keepTerminator").Flag, char)	1 times
+		std.stdio.File.ByLine!(..).ByLine std.stdio.File.byLine!(..).byLine(std.typecons.Flag!("keepTerminator").Flag, char)	1 time
 	Took: 0.000329 seconds (0.007688%)
 	Finished in: 0.059926 seconds (1.402373%)
 Function 'void function(std.array.Appender!(..).Appender, scope const(..)*, ref const(std.format.FormatSpec!(..).FormatSpec))* std.format.formattedWrite!(std.array.Appender!(..).Appender, char, const(..).formattedWrite(std.array.Appender!(..).Appender, const(..).__lambda7()':
@@ -2246,7 +2246,7 @@ Function 'void std.uni.InversionList!(std.uni.GcPolicy).InversionList.__fieldDto
 	Mangled name: '_D3std3uni38__T13InversionListTS3std3uni8GcPolicyZ13InversionList11__fieldDtorMFNaNbNiNeZv'
 	Called by:
 		bool std.uni.loadUnicodeSet!(immutable(std.internal.unicode_tables.UnicodeProperty)[] std.internal.unicode_tables.uniProps.tab(), std.uni.InversionList!(std.uni.GcPolicy).InversionList, char).loadUnicodeSet(..), ref std.uni.InversionList!(std.uni.GcPolicy).InversionList)	15 times
-		ref std.regex.internal.kickstart.ShiftOr!(..).ShiftOr std.regex.internal.kickstart.ShiftOr!(..).ShiftOr.__ctor(ref std.regex.internal.ir.Regex!(..).Regex, uint[])	1 times
+		ref std.regex.internal.kickstart.ShiftOr!(..).ShiftOr std.regex.internal.kickstart.ShiftOr!(..).ShiftOr.__ctor(ref std.regex.internal.ir.Regex!(..).Regex, uint[])	1 time
 		void std.regex.internal.parser.optimize!(..).optimize(ref std.regex.internal.ir.Regex!(..).Regex)	5 times
 		std.uni.InversionList!(std.uni.GcPolicy).InversionList std.regex.internal.parser.optimize!(..).optimize(ref std.regex.internal.ir.Regex!(..).Regex).nextSet(..)	2 times
 		void std.regex.internal.parser.Parser!(..)[], std.regex.internal.parser.CodeGen).Parser.parseEscape()	72 times
