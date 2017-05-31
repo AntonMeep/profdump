@@ -54,7 +54,7 @@ parent --------------> child
 Prints everything. Basically converts `trace.log` making it easier to read.
 Check out examples:
 - [Simple example](./example/sample/simple.txt)
-- [Profdump's trace.log dump](./example/simple/profdump.txt)
+- [Profdump's trace.log dump](./example/sample/profdump.txt)
 
 ## `--blame` option
 Prints functions ordered by time:
