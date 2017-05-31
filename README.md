@@ -50,6 +50,22 @@ parent --------------> child
 
 ```
 
+## Plain text output
+Prints everything. Basically converts `trace.log` making it easier to read.
+Check out examples:
+- [Simple example](./example/sample/simple.txt)
+- [Profdump's trace.log dump](./example/simple/profdump.txt)
+
+## `--blame` option
+Prints functions ordered by time:
+```
+void main()                             	0.01277s 100.00%
+ulong example.fib(..)                   	0.01153s 90.25%
+int example.child2(..)                  	0.00012s 0.91%
+int example.child1(..)                  	0.00002s 0.12%
+int example.sum(..)                     	0.00000s 0.03%
+```
+
 ## JSON output
 Has the following layout:
 ```
@@ -86,49 +102,4 @@ Has the following layout:
 	"tps": <integer> // Number of ticks per second
 }
 
-```
-
-## Plain text output
-Should be easy to understand
-### Example of plain text output:
-```
-Function 'int example.child1(..)':
-	Mangled name: '_D7example6child1FiZi'
-	Called by:
-		int example.child2(..)	2 times
-		void main()	1 times
-	Took: 0.000015 seconds (0.118131%)
-	Finished in: 0.000015 seconds (0.118131%)
-Function 'ulong example.fib(..)':
-	Mangled name: '_D7example3fibFmZm'
-	Calls:
-		ulong example.fib(..)	266 times
-	Called by:
-		ulong example.fib(..)	266 times
-		void main()	10 times
-	Took: 0.011525 seconds (90.252014%)
-	Finished in: 0.011525 seconds (90.252014%)
-Function 'int example.sum(..)':
-	Mangled name: '_D7example3sumFiiZi'
-	Called by:
-		void main()	10 times
-	Took: 0.000003 seconds (0.026251%)
-	Finished in: 0.000003 seconds (0.026251%)
-Function 'int example.child2(..)':
-	Mangled name: '_D7example6child2FiZi'
-	Calls:
-		int example.child1(..)	2 times
-	Called by:
-		void main()	1 times
-	Took: 0.000107 seconds (0.835667%)
-	Finished in: 0.000117 seconds (0.914421%)
-Function 'void main()':
-	Mangled name: '_Dmain'
-	Calls:
-		int example.child1(..)	1 times
-		ulong example.fib(..)	10 times
-		int example.sum(..)	10 times
-		int example.child2(..)	1 times
-	Took: 0.001120 seconds (8.767939%)
-	Finished in: 0.012770 seconds (100.000000%)
 ```
