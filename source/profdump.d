@@ -100,12 +100,14 @@ struct Profile {
 			if(v.CallsTo) {
 				f.writeln("\tCalls:");
 				foreach(ke, va; v.CallsTo)
-					f.writefln("\t\t%s\t%d times", va.Name, va.Calls);
+					f.writefln("\t\t%s\t%d %s", va.Name, va.Calls,
+						va.Calls == 1 ? "time" : "times");
 			}
 			if(v.CalledBy) {
 				f.writeln("\tCalled by:");
 				foreach(ke, va; v.CalledBy)
-					f.writefln("\t\t%s\t%d times", va.Name, va.Calls);
+					f.writefln("\t\t%s\t%d %s", va.Name, va.Calls,
+						va.Calls == 1 ? "time" : "times");
 			}
 			f.writefln("\tTook: %f seconds (%f%%)\n"~
 				"\tFinished in: %f seconds (%f%%)",
