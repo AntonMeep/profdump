@@ -1,5 +1,6 @@
 module profdump;
 
+import std.algorithm : canFind;
 import std.stdio : File;
 import std.string : indexOfAny, indexOfNeither;
 import std.conv : to;
@@ -47,10 +48,15 @@ struct Profile {
 				if(temp.Name.length != 0)
 					this.Functions[temp.Mangled.crc32Of] = temp;
 				auto i = line.indexOfAny("0123456789");
-				enforce(i > 0,
-					"Your trace.log file is invalid");
-				auto s = line[i..$].indexOfNeither("0123456789");
-				this.TicksPerSecond = line[i..i + s].to!ulong;
+				if (i == -1 && line.canFind("Megaticks")) {
+					// timing is in Megaticks. See: druntime/rt/trace.d
+					this.TicksPerSecond = 1_000_000;
+				} else {
+					enforce(i > 0,
+						"Your trace.log file is invalid");
+					auto s = line[i..$].indexOfNeither("0123456789");
+					this.TicksPerSecond = line[i..i + s].to!ulong;
+				}
 				break;
 			} else if(line[0] == '\t') {
 				auto cap = line.matchFirst(
