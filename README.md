@@ -88,7 +88,7 @@ Has the following layout:
 				}
 				<...>
 			],
-			"calledBy": [ // All parents which calls this function
+			"calledBy": [ // All functions that call this function
 				{
 					"name": <string>, // Demangled name of parent
 					"mangled": <string, // Mangled name of parent
