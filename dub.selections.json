@@ -1,0 +1,8 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"emsi_containers": "0.8.0-alpha.9",
+		"silly": {"path":"../silly"},
+		"stdx-allocator": "2.77.2"
+	}
+}

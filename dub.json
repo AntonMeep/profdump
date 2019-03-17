@@ -5,5 +5,20 @@
 	],
 	"description": "Converts profiler output to DOT graph, JSON or human-readable plain text",
 	"copyright": "Copyright © 2017, Anton Fediusin",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"emsi_containers": "~>0.8.0-alpha.9"
+	},
+	"configurations": [
+		{
+			"name": "executable"
+		},
+		{
+			"name": "unittest",
+			"dependencies": {
+				"silly": {"path": "../silly"},
+				"fluent-asserts": ""
+			}
+		}
+	]
 }

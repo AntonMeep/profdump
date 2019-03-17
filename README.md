@@ -1,4 +1,5 @@
-profdump [![Page on DUB](https://img.shields.io/dub/v/profdump.svg)](http://code.dlang.org/packages/profdump) [![License](https://img.shields.io/dub/l/profdump.svg)](https://github.com/ohdatboi/profdump/blob/master/LICENSE)
+profdump [![Page on DUB](https://img.shields.io/dub/v/profdump.svg)](http://code.dlang.org/packages/profdump) 
+[![License](https://img.shields.io/dub/l/profdump.svg)](https://github.com/AntonMeep/profdump/blob/master/LICENSE)
 =============
 profdump converts output of D programming language profiler into:
 - Plain text
